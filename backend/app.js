@@ -7,7 +7,9 @@ const cookieParser = require('cookie-parser')
 const expressValidator = require('express-validator')
 require('dotenv').config()
 // import routes
+const authRoutes = require('./routes/auth')
 const customerRoutes = require('./routes/customer')
+const vehicleRoutes = require('./routes/vehicle')
 
 
 mongoose.connect(
@@ -30,8 +32,9 @@ app.use(cookieParser())
 // used to validate if user inputs for acct. creation..
 app.use(expressValidator())
 // routes middlewares
+app.use('/api',authRoutes)
 app.use('/api',customerRoutes)
-
+app.use('/api',vehicleRoutes)
   const port = process.env.PORT || 8000
 
 app.listen(port,() => {

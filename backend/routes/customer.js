@@ -1,17 +1,18 @@
 const express = require('express')
 const router = express.Router()
-
 // import from the controller where the logic is handled for sign-up/out process
-const {signup,signin,signout} = require('../controllers/customer');
-const{userSignupValidator} = require('../validator')
-// first validate the input  using(validator) then go to next step using(signup)
-router.post("/signup",userSignupValidator, signup);
-/*app.get('/about',(req,res) => {
-    res.send("about page")
-})*/
-//signin route
-router.post("/signin", signin);
-//signout route
-router.get("/signout", signout);
+const {requireSignin,isAuth,isAdmin} = require('../controllers/auth');
+
+// import from the controller for customer where the logic is handled for sign-up/out process
+const {customerById} = require('../controllers/customer');
+
+router.get('/secret/:customerId',requireSignin,isAuth,isAdmin,(req,res) =>{
+            res.json({
+                customer: req.profile
+            })
+})
+
+// take the id-param from routes and execute user by id method
+router.param('customerId',customerById)
 
 module.exports = router

@@ -11,7 +11,7 @@ const customerSchema = new mongoose.Schema(
         salt:String,
         role:{
                 type: Number,
-                default: 0 // nonadmin=0 // admin=1
+                default: 0 // nonadmin=0 // admin=1 //tradein= 2
              },
         buyHistory:{type:Array,default:[] }
     },{timestamps:true}
@@ -19,7 +19,7 @@ const customerSchema = new mongoose.Schema(
 
 //password encrypting on virtual field, we recive password from frontend side
 customerSchema.virtual('password')
-.set(function(password){
+.set(function(password){ 
     this.tempPassword = password
     this.salt = uuidv1() // get a random string and hash tha password
     this.crypted_password = this.encryptPassword(password);
