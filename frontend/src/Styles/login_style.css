@@ -1,0 +1,18 @@
+.main {
+    position: fixed; 
+    top: 30%;
+    left:40%; 
+    height: 50;
+    border-radius: 30px
+}
+
+.inputForm {
+    background: red; 
+    height: 350px; 
+    width: 300px;
+    border-radius: 30px
+}
+
+#email, #password, #submit {
+    margin-top: 20px;
+}
