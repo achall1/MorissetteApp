@@ -1,9 +1,8 @@
-import { render } from "react-dom";
 import React from 'react'
-import {Form, Dropdown, Button} from 'react-bootstrap'
-import Header from './header'
+import {Form, Col, Button} from 'react-bootstrap'
 
-class CreateAccount extends React.Component {
+
+class UpdateAccount extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -29,64 +28,102 @@ class CreateAccount extends React.Component {
      render() {
         return (
             <div>
-                <Header />
-                <Form>
-                    <Form.Group className = 'inputs' controlId="formBasicEmail">
-                        <Form.Label>Email address: </Form.Label>
-                        <Form.Control type="email" name="email" placeholder="Enter email" />
+               <Form>
+                    <Form.Row>
+                        <Form.Group as={Col} controlId="formGridEmail">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control type="email" placeholder="Enter email" />
+                        </Form.Group>
+
+                        <Form.Group as={Col} controlId="formGridPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" placeholder="Password" />
+                        </Form.Group>
+                    </Form.Row>
+
+                    <Form.Group controlId="formGridAddress1">
+                        <Form.Label>Address</Form.Label>
+                        <Form.Control placeholder="1234 Main St" />
                     </Form.Group>
-                    <Form.Group className = 'inputs' controlId="formBasicPassword">
-                        <Form.Label>Password: </Form.Label>
-                        <Form.Control type="password" name="pswd" placeholder="Password" />
+
+                    <Form.Group controlId="formGridAddress2">
+                        <Form.Label>Address 2</Form.Label>
+                        <Form.Control placeholder="Apartment, studio, or floor" />
                     </Form.Group>
-                    <Form.Group className = 'inputs' controlId="formBasicPassword">
-                        <Form.Label>Confirm Password: </Form.Label>
-                        <Form.Control type="password" />
+
+                    <Form.Row>
+                        <Form.Group as={Col} controlId="formGridCity">
+                        <Form.Label>City</Form.Label>
+                        <Form.Control />
+                        </Form.Group>
+
+                        <Form.Group as={Col} controlId="formGridState">
+                        <Form.Label>State</Form.Label>
+                        <Form.Control as="select" value="Choose...">
+                            <option>Choose...</option>
+                            <option>AL</option>
+                            <option>AK</option>
+                            <option>AZ</option>
+                            <option>AR</option>
+                            <option>CA</option>
+                            <option>CO</option>
+                            <option>CT</option>
+                            <option>DE</option>
+                            <option>FL</option>
+                            <option>GA</option>
+                            <option>HI</option>
+                            <option>ID</option>
+                            <option>IL</option>
+                            <option>IN</option>
+                            <option>IA</option>
+                            <option>KS</option>
+                            <option>KY</option>
+                            <option>LA</option>
+                            <option>ME</option>
+                            <option>MD</option>
+                            <option>MA</option>
+                            <option>MI</option>
+                            <option>MN</option>
+                            <option>MS</option>
+                            <option>MO</option>
+                            <option>MT</option>
+                            <option>NE</option>
+                            <option>NV</option>
+                            <option>NH</option>
+                            <option>NJ</option>
+                            <option>NC</option>
+                            <option>ND</option>
+                            <option>OH</option>
+                            <option>OK</option>
+                            <option>OR</option>
+                            <option>PA</option>
+                            <option>RI</option>
+                            <option>SC</option>
+                            <option>SD</option>
+                            <option>TN</option>
+                            <option>TX</option>
+                            <option>UT</option>
+                            <option>VT</option>
+                            <option>VA</option>
+                            <option>WA</option>
+                            <option>WV</option>
+                            <option>WI</option>
+                            <option>WY</option>
+                        </Form.Control>
+                        </Form.Group>
+
+                        <Form.Group as={Col} controlId="formGridZip">
+                        <Form.Label>Zip</Form.Label>
+                        <Form.Control />
+                        </Form.Group>
+                    </Form.Row>
+
+                    <Form.Group id="formGridCheckbox">
+                        <Form.Check type="checkbox" label="Check me out" />
                     </Form.Group>
-                    
-    
-                    <Form.Group className = 'inputs' controlId="formBasicEmail">
-                        <Form.Label>Street Address: </Form.Label>
-                        <Form.Control type="text" name="address" />
-                    </Form.Group>
-    
-                    <Dropdown className = 'inputs' >
-                        State: 
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        Select State
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                        <Dropdown.Item href="#/action-1">MD</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">AZ</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">CA</Dropdown.Item>
-                    </Dropdown.Menu>
-                    </Dropdown>
-    
-                    <Form.Group className = 'inputs' controlId="formBasicEmail">
-                        <Form.Label>Credit Card #: </Form.Label>
-                        <Form.Control type="text"  name="creditcard"/>
-                    </Form.Group>
-                    <Form.Group className = 'inputs' controlId="formBasicEmail">
-                        <Form.Label>CVV: </Form.Label>
-                        <Form.Control type="text" name="cvv" />
-                    </Form.Group>
-                    <Form.Group className = 'inputs' controlId="formBasicEmail">
-                        <Form.Label>Expiration Month: </Form.Label>
-                        <Form.Control type="text" name="expMonth" />
-                    </Form.Group>
-    
-                    <Form.Group className = 'inputs' controlId="formBasicEmail">
-                        <Form.Label>Expiration Year: </Form.Label>
-                        <Form.Control type="text" name="expYear" />
-                    </Form.Group>
-    
-                    <Form.Group className = 'inputs' controlId="formBasicEmail">
-                        <Form.Label>Insurance Company: </Form.Label>
-                        <Form.Control type="text" name="insuCompany" />
-                    </Form.Group>
-    
+
                     <Button variant="primary" type="submit">
-                        Create Account
+                        Submit
                     </Button>
                 </Form>
             </div>
@@ -94,4 +131,4 @@ class CreateAccount extends React.Component {
     }
 }
  
- export default CreateAccount;
+ export default UpdateAccount;
