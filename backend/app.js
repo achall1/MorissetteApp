@@ -10,6 +10,10 @@ require('dotenv').config()
 const authRoutes = require('./routes/auth')
 const customerRoutes = require('./routes/customer')
 const vehicleRoutes = require('./routes/vehicle')
+const financeRoutes = require('./routes/finance')
+const tradeinRoutes = require('./routes/tradein')
+const orderRoutes = require('./routes/order');
+
 
 
 mongoose.connect(
@@ -35,6 +39,11 @@ app.use(expressValidator())
 app.use('/api',authRoutes)
 app.use('/api',customerRoutes)
 app.use('/api',vehicleRoutes)
+app.use('/api',financeRoutes)
+app.use('/api',tradeinRoutes)
+app.use('/api', orderRoutes);
+
+// import port number from .env file
   const port = process.env.PORT || 8000
 
 app.listen(port,() => {

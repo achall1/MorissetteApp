@@ -3,7 +3,7 @@ const _ = require('lodash')
 const fs = require('fs')
 const {errorHandler} = require('../helpers/dbError')
 const Vehicle = require('../models/vehicle')
-
+//find vehicle by id
 exports.vehicleById =(req,res,next,id) =>
 {
     Vehicle.findById(id).exec((err, vehicle) =>{
@@ -13,13 +13,13 @@ exports.vehicleById =(req,res,next,id) =>
                 error: 'vehicle is not found'
             })
         }
-        // poulate the vehicle from the db using id
+        // poulate the vehicle to the db using id
         req.vehicle = vehicle
         next()
     })
 }
 
-// read vehicle and return
+// find and return vehicle
 exports.read = (req, res) =>
 {
     // set image undefined because its to large to send to client directly
@@ -32,7 +32,7 @@ exports.remove = (req, res) =>
 {
     let vehicle = req.vehicle
 
-    vehicle.remove((err,deletedVehicle) =>{
+    vehicle.remove((err) =>{
         if(err)
         {
             return res.status(400).json({
@@ -48,6 +48,7 @@ exports.remove = (req, res) =>
 
 
 // used to handle form data and image coming from client 
+//create a vehicle and upload image 
 exports.create = (req,res) =>
 {
     let form = new formidable.IncomingForm()
@@ -95,3 +96,24 @@ if(!make || !model|| !mileage||  !price|| !vin|| !invintoryCount)
         })
     })
 }
+
+
+exports.decreaseQuantity = (req, res, next) => {
+    let bulkOps = req.body.order.products.map(item => {
+        return {
+            updateOne: {
+                filter: { _id: item._id },
+                update: { $inc: { quantity: -item.count, sold: +item.count } }
+            }
+        };
+    });
+
+    Product.bulkWrite(bulkOps, {}, (error, products) => {
+        if (error) {
+            return res.status(400).json({
+                error: 'Could not update product'
+            });
+        }
+        next();
+    });
+};
