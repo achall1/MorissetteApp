@@ -13,6 +13,13 @@
     border-radius: 30px
 }
 
-#email, #password, #submit {
+.elem {
     margin-top: 20px;
+}
+
+.header {
+    background: #005EFF;
+    height: 150px;
+    width: 100%;
+    color: #FFEA47;
 }

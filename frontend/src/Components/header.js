@@ -1,12 +1,12 @@
 import React from 'react';
-import {  Route, Link, Switch, BrowserRouter as Router } from 'react-router-dom'
-import '../Styles/header_styles.css';
-import Home from './home';
-import BrowseInventory from './browseInventory';
-import UpdateAccount from './updateAccount'
-import Login from './login'
-import Cart from './cart';
-import { Nav, Navbar, Form, FormControl, Button} from 'react-bootstrap'
+// import {  Route, Link, Switch, BrowserRouter as Router } from 'react-router-dom'
+// import Home from './home';
+// import BrowseInventory from './browseInventory';
+// import UpdateAccount from './editAccount'
+// import Login from './login'
+// import Cart from './cart';
+import '../Styles/header_style.css';
+import { Nav, Navbar, Form} from 'react-bootstrap'
 // This file represents the header section of the web page 
 // which will always be present. We must alter the header based on 
 // the condition of them being signed in as a registered customer or not
@@ -24,15 +24,14 @@ const Header = () => {
             //     </div>
             // </Router>
             <Navbar bg="primary" variant="dark">
-                <Navbar.Brand href="/">Navbar</Navbar.Brand>
+                <Navbar.Brand href="/">Morisette</Navbar.Brand>
                 <Nav className="mr-auto">
-                <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="/browse">Features</Nav.Link>
-                <Nav.Link href="/account_settings">Pricing</Nav.Link>
+                <Nav.Link href="/browse">Browse</Nav.Link>
+                <Nav.Link href="/cart">Cart</Nav.Link>
+                <Nav.Link href="/account-settings">Account Settings</Nav.Link>
+                <Nav.Link href="/signin">Sign In</Nav.Link>
                 </Nav>
                 <Form inline>
-                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                <Button variant="outline-light">Search</Button>
                 </Form>
           </Navbar>
     )

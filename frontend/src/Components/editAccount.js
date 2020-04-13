@@ -1,8 +1,9 @@
 import React from 'react'
 import {Form, Col, Button} from 'react-bootstrap'
+import Footer from './footer';
 
 
-class UpdateAccount extends React.Component {
+class editAccount extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -126,9 +127,10 @@ class UpdateAccount extends React.Component {
                         Submit
                     </Button>
                 </Form>
+                <Footer />
             </div>
         );
     }
 }
  
- export default UpdateAccount;
+ export default editAccount;

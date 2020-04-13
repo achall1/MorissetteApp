@@ -1,9 +1,4 @@
 
-
-ul {
-    background: green;
-}
-
 #navBar {
     background: blueviolet;
     list-style-type: none;
@@ -13,9 +8,10 @@ ul {
 }
 
 .listElem {
-    float: left;
+    
     display: inline;
     padding: 10px;
     border-color: black;
     border-right:1px solid #bbb;
 }
+
