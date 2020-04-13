@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import Home from './Components/home'
 import {  Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 import BrowseInventory from './Components/browseInventory';
@@ -13,7 +12,7 @@ import AccountSettings from './Components/accountSettings';
 import TradeIn from './Components/trade_in';
 function App() {
   return (
-      <div className="App">
+      <div style={{textAlign: "center"}}>
         <Header />
         <Router>
             <Switch>

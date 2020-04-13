@@ -3,8 +3,7 @@ import React from 'react'
 
 const BrowseInventory = () => {
     return ( 
-        <div>
-            
+        <div>   
             <p> Here is the current inventory</p>
         </div>
     )
