@@ -7,7 +7,7 @@ import Footer from './footer'
 
 
 const Login  = () => {
-    const [username, setUsername] = useState("");
+    const [userEmail, setUserEmail] = useState("");
     const [userPassword, setPassword] = useState("");
 
     // const handleSubmit = (e) => {
@@ -18,14 +18,17 @@ const Login  = () => {
     const sendLogin = async (e) => {
         //This function will send a request through Axios to the backend route
         //check if the user is in the database
-        try{
-            e.preventDefault();
-            const response = await axios.post('http://localhost:8000/api/signin', 
-            {email: username, password: userPassword});
-            console.log("Returned data: ", response)
-        } catch (e) {
-            console.log("Axios request failed", e);
-        }
+        console.log("Email: ", userEmail);
+        console.log("Password: ", userPassword);
+
+        e.preventDefault();
+        axios.post('http://localhost:8000/api/signin', 
+        {
+            "email": userEmail,
+            "password": userPassword
+        })
+        .then(() => console.log("Sign in apprroved"))
+        .catch(err =>  console.log("Axios request failed", err));
     }
     return (
         <div>
@@ -41,7 +44,7 @@ const Login  = () => {
                             name="username" 
                             type="text" 
                             placeholder="Enter username" 
-                            onChange = { e => setUsername(e.target.value) }/>
+                            onChange = { e => setUserEmail(e.target.value) }/>
                             </Col>
                         </Form.Group>
 
