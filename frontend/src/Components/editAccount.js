@@ -1,7 +1,7 @@
 import React from 'react'
-import {Form, Col, Button} from 'react-bootstrap'
+import {Form, Col, Button, Row} from 'react-bootstrap'
 import Footer from './footer';
-
+import '../Styles/editAccount_style.css'
 
 class editAccount extends React.Component {
     constructor(props){
@@ -28,38 +28,47 @@ class editAccount extends React.Component {
     //  }
      render() {
         return (
-            <div>
-               <Form>
-                    <Form.Row>
-                        <Form.Group as={Col} controlId="formGridEmail">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
-                        </Form.Group>
-
-                        <Form.Group as={Col} controlId="formGridPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
-                        </Form.Group>
-                    </Form.Row>
-
-                    <Form.Group controlId="formGridAddress1">
-                        <Form.Label>Address</Form.Label>
-                        <Form.Control placeholder="1234 Main St" />
+                <div>
+                    <h2 className="editAccountHeader">Edit Your Account</h2>
+                    <Form className="editAccountForm">
+                    <Form.Group as={Row}>
+                        <Form.Label column sm={2}>
+                        First Name:
+                        </Form.Label>
+                        <Col sm={9}>
+                        <Form.Control type="text" />
+                        </Col>
                     </Form.Group>
 
-                    <Form.Group controlId="formGridAddress2">
-                        <Form.Label>Address 2</Form.Label>
-                        <Form.Control placeholder="Apartment, studio, or floor" />
+                    <Form.Group as={Row}>
+                        <Form.Label column sm={2}>
+                        Last Name: 
+                        </Form.Label>
+                        <Col sm={9}>
+                        <Form.Control type="text" />
+                        </Col>
                     </Form.Group>
 
-                    <Form.Row>
-                        <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>City</Form.Label>
-                        <Form.Control />
-                        </Form.Group>
+                    <Form.Group as={Row}>
+                        <Form.Label column sm={2}>
+                        Street Address:
+                        </Form.Label>
+                        <Col sm={9}>
+                        <Form.Control type="text" />
+                        </Col>
+                    </Form.Group>
 
-                        <Form.Group as={Col} controlId="formGridState">
-                        <Form.Label>State</Form.Label>
+                    <Form.Group as={Row}>
+                        <Form.Label column sm={2}>
+                        Date of Birth: 
+                        </Form.Label>
+                        <Col sm={9}>
+                        <Form.Control type="text" />
+                        </Col>
+                    </Form.Group>
+                        <Form.Group as={Row} controlId="formGridState">
+                        <Form.Label column sm={2}>State</Form.Label>
+                        <Col sm={9}>
                         <Form.Control as="select" value="Choose...">
                             <option>Choose...</option>
                             <option>AL</option>
@@ -111,16 +120,75 @@ class editAccount extends React.Component {
                             <option>WI</option>
                             <option>WY</option>
                         </Form.Control>
+                        </Col>
                         </Form.Group>
 
-                        <Form.Group as={Col} controlId="formGridZip">
-                        <Form.Label>Zip</Form.Label>
-                        <Form.Control />
+                        <Form.Group as={Row}>
+                            <Form.Label column sm={2}>
+                            City
+                            </Form.Label>
+                            <Col sm={9}>
+                            <Form.Control type="text" />
+                            </Col>
                         </Form.Group>
-                    </Form.Row>
+
+
+                        <Form.Group as={Row}>
+                            <Form.Label column sm={2}>
+                            Zip
+                            </Form.Label>
+                            <Col sm={9}>
+                            <Form.Control type="text" />
+                            </Col>
+                        </Form.Group>
+
+                        <Form.Group as={Row}>
+                            <Form.Label column sm={2}>
+                            Credit Card #:
+                            </Form.Label>
+                            <Col sm={9}>
+                            <Form.Control type="text" />
+                            </Col>
+                        </Form.Group>
+
+                        <Form.Group as={Row}>
+                            <Form.Label column sm={2}>
+                            CVV:
+                            </Form.Label>
+                            <Col sm={9}>
+                            <Form.Control type="text" />
+                            </Col>
+                        </Form.Group>
+
+                        <Form.Group as={Row}>
+                            <Form.Label column sm={2}>
+                            Expiration Date: 
+                            </Form.Label>
+                            <Col sm={9}>
+                            <Form.Control type="text" />
+                            </Col>
+                        </Form.Group>
+
+                        <Form.Group as={Row}>
+                            <Form.Label column sm={2}>
+                            Auto Insurer:
+                            </Form.Label>
+                            <Col sm={9}>
+                            <Form.Control type="text" />
+                            </Col>
+                        </Form.Group>
+
+                        <Form.Group as={Row}>
+                            <Form.Label column sm={2}>
+                            Last 4 digits of SSN:
+                            </Form.Label>
+                            <Col sm={9}>
+                            <Form.Control type="text" />
+                            </Col>
+                        </Form.Group>
 
                     <Button variant="primary" type="submit">
-                        Submit
+                        Update Account
                     </Button>
                 </Form>
                 <Footer />

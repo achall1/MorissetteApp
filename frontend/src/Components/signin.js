@@ -1,5 +1,5 @@
 import React , {useState } from 'react';
-import { Form, Button  } from 'react-bootstrap';
+import { Form, Button, Row, Col } from 'react-bootstrap';
 import '../Styles/signin_style.css';
 import  axios  from 'axios';
 import { Route, Link } from 'react-router-dom'
@@ -34,23 +34,38 @@ const Login  = () => {
                     <h2>Sign into your account!</h2>
                  </div>
                 <Form>
-                        <Form.Group className="elem" controlId="formBasicEmail">
-                            <Form.Label>Username </Form.Label>
+                        <Form.Group className="elem" as={Row} controlId="formBasicEmail">
+                            <Form.Label column sm={2}>Username </Form.Label>
+                            <Col sm={5}>
                             <Form.Control 
                             name="username" 
                             type="text" 
                             placeholder="Enter username" 
                             onChange = { e => setUsername(e.target.value) }/>
+                            </Col>
                         </Form.Group>
 
+
+                        {/* <Form.Group as={Row}>
+                            <Form.Label column sm={2}>
+                            Email
+                            </Form.Label>
+                            <Col sm={10}>
+                            <Form.Control type="text" />
+                            </Col>
+                        </Form.Group> */}
+
+
                         <br></br>
-                        <Form.Group className="elem" controlId="formBasicPassword">
-                            <Form.Label>Password: </Form.Label>
+                        <Form.Group className="elem" as={Row} controlId="formBasicPassword">
+                            <Form.Label column sm={2}>Password: </Form.Label>
+                            <Col sm={5}>
                             <Form.Control 
                             name="user_password" 
                             type="password" 
                             placeholder="Password" 
                             onChange={ e => setPassword(e.target.value) }/>
+                            </Col>
                         </Form.Group>
 
                         <Button 
