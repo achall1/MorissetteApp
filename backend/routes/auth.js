@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-
 // import from the controller where the logic is handled for sign-up/out process
 const {signup,signin,signout,requireSignin} = require('../controllers/auth');
 const{userSignupValidator} = require('../validator')
