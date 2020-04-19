@@ -10,11 +10,6 @@ const Login  = () => {
     const [userEmail, setUserEmail] = useState("");
     const [userPassword, setPassword] = useState("");
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     alert(`Submitting form with ${userEmail} and ${userPassword}`);
-    // }
-
     const sendLogin = async (e) => {
         //This function will send a request through Axios to the backend route
         //check if the user is in the database
@@ -37,7 +32,7 @@ const Login  = () => {
                     <h2>Sign into your account!</h2>
                  </div>
                 <Form>
-                        <Form.Group className="elem" as={Row} controlId="formBasicEmail">
+                        <Form.Group className="elem" as={Row}>
                             <Form.Label column sm={2}>Username </Form.Label>
                             <Col sm={5}>
                             <Form.Control 
@@ -47,18 +42,6 @@ const Login  = () => {
                             onChange = { e => setUserEmail(e.target.value) }/>
                             </Col>
                         </Form.Group>
-
-
-                        {/* <Form.Group as={Row}>
-                            <Form.Label column sm={2}>
-                            Email
-                            </Form.Label>
-                            <Col sm={10}>
-                            <Form.Control type="text" />
-                            </Col>
-                        </Form.Group> */}
-
-
                         <br></br>
                         <Form.Group className="elem" as={Row} controlId="formBasicPassword">
                             <Form.Label column sm={2}>Password: </Form.Label>

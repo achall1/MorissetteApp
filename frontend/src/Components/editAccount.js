@@ -7,25 +7,30 @@ class editAccount extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            email: "",
-            password: "",
-            StreetAddress: "",
-            State: "",
-            CreditCard: "",
-            CVV: "",
-            ExpirationMonth: "",
-            ExpirationYear: "",
-            InsuranceCompany: ""
+           firstName: '',
+           lastName:'',
+           currentEmail:'',
+           email: '',
+           streetAddress:'',
+           DOB: '',
+           state: '',
+           city: '',
+           zip: '',
+           creditcard: '',
+           cvv: '',
+           expirationDate: '',
+           autoInsurer: '',
+           SSN:''
+
         }
     } 
-     onChange(e) {
-         console.log(e.target.name);
-         console.log(e.target.value)
+     handleOnChange(e) {
+        [e.target.name] = e.target.value
      }
-    //  handleSubmit = (e) => {
-    //      e.preventDefault();
-    //      alert("Thank you for your update")
-    //  }
+     handleSubmit = (e) => {
+         e.preventDefault();
+         alert("Thank you for your update")
+     }
      render() {
         return (
                 <div>
@@ -36,7 +41,7 @@ class editAccount extends React.Component {
                         First Name:
                         </Form.Label>
                         <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control name="firstName" type="text" onChange={this.handleOnChange}/>
                         </Col>
                     </Form.Group>
 
@@ -45,7 +50,16 @@ class editAccount extends React.Component {
                         Last Name: 
                         </Form.Label>
                         <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control name="lastName" onChange={this.handleOnChange} type="text" />
+                        </Col>
+                    </Form.Group>
+
+                    <Form.Group as={Row}>
+                        <Form.Label column sm={2}>
+                        Email Address: 
+                        </Form.Label>
+                        <Col sm={9}>
+                        <Form.Control name="email" onChange={this.handleOnChange} type="text" />
                         </Col>
                     </Form.Group>
 
@@ -54,7 +68,7 @@ class editAccount extends React.Component {
                         Street Address:
                         </Form.Label>
                         <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control name="streetAddress" onChange={this.handleOnChange} type="text" />
                         </Col>
                     </Form.Group>
 
@@ -63,13 +77,13 @@ class editAccount extends React.Component {
                         Date of Birth: 
                         </Form.Label>
                         <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control name="DOB" onChange={this.handleOnChange} type="text" />
                         </Col>
                     </Form.Group>
                         <Form.Group as={Row} controlId="formGridState">
                         <Form.Label column sm={2}>State</Form.Label>
                         <Col sm={9}>
-                        <Form.Control as="select" value="Choose...">
+                        <Form.Control name="state" onChange={this.handleOnChange} as="select" value={this.state.state.value}>
                             <option>Choose...</option>
                             <option>AL</option>
                             <option>AK</option>
@@ -128,7 +142,7 @@ class editAccount extends React.Component {
                             City
                             </Form.Label>
                             <Col sm={9}>
-                            <Form.Control type="text" />
+                            <Form.Control name="city" onChange={this.handleOnChange} type="text" />
                             </Col>
                         </Form.Group>
 
@@ -138,7 +152,7 @@ class editAccount extends React.Component {
                             Zip
                             </Form.Label>
                             <Col sm={9}>
-                            <Form.Control type="text" />
+                            <Form.Control name="zipcode" onChange={this.handleOnChange} type="text" />
                             </Col>
                         </Form.Group>
 
@@ -147,7 +161,7 @@ class editAccount extends React.Component {
                             Credit Card #:
                             </Form.Label>
                             <Col sm={9}>
-                            <Form.Control type="text" />
+                            <Form.Control name="creditcard" onChange={this.handleOnChange} type="text" />
                             </Col>
                         </Form.Group>
 
@@ -156,7 +170,7 @@ class editAccount extends React.Component {
                             CVV:
                             </Form.Label>
                             <Col sm={9}>
-                            <Form.Control type="text" />
+                            <Form.Control name="cvv" onChange={this.handleOnChange} type="text" />
                             </Col>
                         </Form.Group>
 
@@ -165,7 +179,7 @@ class editAccount extends React.Component {
                             Expiration Date: 
                             </Form.Label>
                             <Col sm={9}>
-                            <Form.Control type="text" />
+                            <Form.Control name="expirationDate" onChange={this.handleOnChange} type="text" />
                             </Col>
                         </Form.Group>
 
@@ -174,7 +188,7 @@ class editAccount extends React.Component {
                             Auto Insurer:
                             </Form.Label>
                             <Col sm={9}>
-                            <Form.Control type="text" />
+                            <Form.Control name="autoInsurer" onChange={this.handleOnChange} type="text" />
                             </Col>
                         </Form.Group>
 
@@ -183,11 +197,11 @@ class editAccount extends React.Component {
                             Last 4 digits of SSN:
                             </Form.Label>
                             <Col sm={9}>
-                            <Form.Control type="text" />
+                            <Form.Control name="SSN" onChange={this.handleOnChange} type="text" />
                             </Col>
                         </Form.Group>
 
-                    <Button variant="primary" type="submit">
+                    <Button variant="primary" type="submit" onClick={this.handleSubmit}>
                         Update Account
                     </Button>
                 </Form>
