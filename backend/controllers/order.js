@@ -34,12 +34,12 @@ exports.create = (req, res) => {
          order.products.length
          order.amount
       /*  const emailData = {
-            to: 'kaloraat@gmail.com',
-            from: 'noreply@ecommerce.com',
-            subject: `A new order is received`,
+            to: '',
+            from: '.com',
+            subject: ``,
             html: `
             <p>Customer name:</p>
-            <p>Total products: ${order.products.length}</p>
+            <p>Total products: ${order.length}</p>
             <p>Total cost: ${order.amount}</p>
             <p>Login to dashboard to the order in detail.</p>
         `
