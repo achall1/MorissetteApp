@@ -4,15 +4,25 @@ const uuidv1 = require('uuid/v1')
 
 const customerSchema = new mongoose.Schema(
     {
-        name: {type: String,trim:true,required:true,maxlength:32},
-        phoneNumber:{type: Number,trim:true,required:false,maxlength:11},
-        email:{type: String,trim:true,required:true,unique:20},
-        crypted_password:{type: String,required:true},
+        first_name: {type: String,trim:true,required:true,maxlength:32},
+        last_name: {type: String,trim:true,required:true,maxlength:32},
+        email: {type: String,trim:true,required:true,unique:20},
+        crypted_password: {type: String,required:true},
         salt:String,
-        role:{
+        role: {
                 type: Number,
                 default: 0 // nonadmin=0 // admin=1 //tradein= 2
              },
+        Street_Address:{type: String, trim:true, default:""},
+        DOB:{type: String, trim:true, default:""},
+        State: {type: String, trim:true, default:""},
+        City: {type: String, trim:true, default:""},
+        Zip: {type: Number, trim:true, default: 0, default:0},
+        CreditCardNo: {type: Number, default: 0, default:0},
+        CVV: {type: Number, default: 0, default:0},
+        ExpirationDate: {type: String, trim:true, default:""},
+        Auto_Insurer: {type: String, trim:true}, default:"",
+        Last4SSN: {type: Number, default: 0, default:0},
         buyHistory:{type:Array,default:[] }
     },{timestamps:true}
 );
