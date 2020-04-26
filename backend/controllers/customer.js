@@ -60,16 +60,17 @@ exports.update = (req, res) => {
 
    const newFirstName = req.body.firstName != '' ? req.body.firstName : customer.first_name;
    const newLastName = req.body.lastName != '' ? req.body.lastName : customer.last_name;
-   const newEmail = req.body.email != '' ? req.body.email : Customer.email;
-   const newStreetAddress = req.body.Street_Address != '' ? req.body.Street_Address : customer.StreetAddress;
+   const newEmail = req.body.email != '' ? req.body.email : customer.email;
+   const newStreetAddress = req.body.StreetAddress != '' ? req.body.StreetAddress : customer.StreetAddress;
    const newDOB = req.body.DOB != '' ? req.body.DOB : customer.DOB;
-   const newState = req.body.State != '' ? req.body.State : customer.State;
+   const newCity= req.body.City != '' ? req.body.City : customer.City;
+   const newState = req.body.State != '' ? req.body.State : customer.State; 
    const newZip = req.body.Zip != '' ? req.body.Zip : customer.Zip;
    const newCreditCard = req.body.CreditCardNo != '' ? req.body.CreditCardNo : customer.CreditCardNo;
    const newCVV = req.body.CVV != '' ? req.body.CVV : customer.CVV;
-   const newExpirationDate = req.body.expirationDate != '' ? req.body.expirationDate: customer.ExpirationDate;
+   const newExpirationDate = req.body.ExpirationDate != '' ? req.body.ExpirationDate: customer.ExpirationDate;
    const newAutoInsurer = req.body.autoInsurer != '' ? req.body.autoInsurer : customer.Auto_Insurer;
-   const newSSN = req.body.SSN != '' ? req.body.SSN : customer.Last4SSN;
+   const newSSN = req.body.Last4SSN != '' ? req.body.Last4SSN : customer.Last4SSN;
    const newPassword = req.body.crypted_password != '' ? req.body.crypted_password : customer.crypted_password;
 
     Customer.findOne({ _id: req.profile._id }, (err, customer) => {
