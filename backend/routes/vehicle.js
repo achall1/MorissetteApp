@@ -10,7 +10,7 @@ const {customerById} = require('../controllers/customer');
 // a page to find the car using id
 router.get('/vehicle/:vehicleId', read);
 
-//used to post a car to db
+//upload a vehicle and image  to db using admin id 
 router.post('/vehicle/create/:customerId',requireSignin,isAuth,isAdmin,create);
 //delete a car using vehicleId and adminId(customer with role=1)
 router.delete('/vehicle/:vehicleId/:customerId',requireSignin,isAuth,isAdmin,remove);

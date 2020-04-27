@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
+const cors = require('cors')
 const expressValidator = require('express-validator')
 const Cors = require("cors")
 require('dotenv').config()
@@ -11,6 +12,10 @@ require('dotenv').config()
 const authRoutes = require('./routes/auth')
 const customerRoutes = require('./routes/customer')
 const vehicleRoutes = require('./routes/vehicle')
+const financeRoutes = require('./routes/finance')
+const tradeinRoutes = require('./routes/tradein')
+const orderRoutes = require('./routes/order');
+
 
 
 mongoose.connect(
@@ -42,10 +47,17 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser())
 // used to validate if user inputs for acct. creation..
 app.use(expressValidator())
+//use cors for react
+app.use(cors())
 // routes middlewares
 app.use('/api',authRoutes)
 app.use('/api',customerRoutes)
 app.use('/api',vehicleRoutes)
+app.use('/api',financeRoutes)
+app.use('/api',tradeinRoutes)
+app.use('/api', orderRoutes);
+
+// import port number from .env file
   const port = process.env.PORT || 8000
 
 app.listen(port,() => {
