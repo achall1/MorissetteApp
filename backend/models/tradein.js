@@ -9,6 +9,8 @@ const tradeinSchema = new mongoose.Schema(
         bodytype:{type: String,trim:true,required:true,maxlength:15},
         vin:{type: String,trim:true,required:false,maxlength:17},
         mileage : {type: Number,trim:true,required:true,maxlength:12},
+        condition : {type: String,trim:true,required:true,maxlength:30},
+        featuresandSpecs : {type: String,trim:true,required:true,maxlength:30},
         askingprice : {type: Number,trim:true,required:true,maxlength:12},
         image:{data: Buffer, 
                contentType: String
