@@ -10,6 +10,8 @@ import SignUp from './Components/signup'
 import DeliveryStatus from './Components/deliveryStatus';
 import AccountSettings from './Components/accountSettings';
 import TradeIn from './Components/trade_in';
+import PaymentForm from './Components/paymentForm';
+
 function App() {
   return (
       <div style={{textAlign: "center"}}>
@@ -25,6 +27,7 @@ function App() {
               <Route exact path="/Delivery-Status" component={DeliveryStatus} />
               <Route exact path="/edit-account" component={editAccount} />
               <Route exact path="/Trade-In" component={TradeIn} />
+              <Route exact path="/paymentForm" component={PaymentForm} />
             </Switch>
         </Router>
     </div>
