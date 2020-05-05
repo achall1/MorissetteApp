@@ -26,7 +26,10 @@ exports.read = (req, res) =>
     req.vehicle.image = undefined
     return res.json(req.vehicle)
 }
-//retrun vehicle image  to frontend
+
+
+//retrun vehicle image  to frontend 
+// example query http://localhost:8000/api/vehicle/picture/5e7408ced3ae6b3b0cb30730
 exports.image = (req, res, next) => {
     if (req.vehicle.image.data) {
         res.set('Content-Type',req.vehicle.image.contentType);//"image/jpeg; charset=UTF-8" 
@@ -52,9 +55,6 @@ exports.remove = (req, res) =>
     })
    
 }
-
-
-
 
 // used to handle form data and image coming from client 
 //create a vehicle and upload image 
@@ -107,53 +107,22 @@ if(!make || !model|| !mileage||  !price|| !vin|| !invintoryCount)
 }
 
 
-/**
- * find all cars and return them byorder using model/make/year or any other fiels
- * the query string is like below
- * by model = /vehicles?sortBy=model&order=desc&limit=5
- * by make = /vehicles?sortBy=make&order=desc&limit=5
- * by year = /vehicles?sortBy=year&order=desc&limit=5
- * if there is no parma then all vehicles are returned
- */
-
-exports.findCar = (req, res) => {
-    let order = req.query.order ? req.query.order : 'asc';
-    let sortBy = req.query.sortBy ? req.query.sortBy : '_id';
-    let limit = req.query.limit ? parseInt(req.query.limit) :100;
-
-    Vehicle.find()
-        .select('-image')
-        .populate('makeofCar') 
-        .sort([[sortBy, order]])
-        .limit(limit)
-        .exec((err, vehicles) => {
-            if (err) {
-                return res.status(400).json({
-                    error: 'The Vehicle is not found in the DB'
-                });
-            }
-            res.json(vehicles);
-        });
-};
-
 
 
 
 /**
- * list products by search, using price range 
+    search vehicle using price range you get from the body 
  */
   
-exports.searchCar = (req, res) => {
-    let order = req.body.order ? req.body.order : "desc";
-    let sortBy = req.body.sortBy ? req.body.sortBy : "_id";
-    let limit = req.body.limit ? parseInt(req.body.limit) : 100;
-    let skip = parseInt(req.body.skip);
+exports.searchByPrice = (req, res) => {
+    
+   // let limit = req.body.limit ? parseInt(req.body.limit) : 100;
+    //let skip = parseInt(req.body.skip);
     let findArgs = {};
+    
  
-    // console.log(order, sortBy, limit, skip, req.body.filters);
-    // console.log("findArgs", findArgs);
- 
-    for (let key in req.body.filters) {
+   for (let key in req.body.filters) {
+
         if (req.body.filters[key].length > 0) {
             if (key === "price") {
                 // gte -  greater than price [0-10]
@@ -162,73 +131,74 @@ exports.searchCar = (req, res) => {
                     $gte: req.body.filters[key][0],
                     $lte: req.body.filters[key][1]
                 };
-            } else {
+            }else {
                 findArgs[key] = req.body.filters[key];
             }
         }
-    }
- 
+    } 
+//find the vehicle in db using the price range 
     Vehicle.find(findArgs)
         .select("-image")
-        //.populate("category")
-        .sort([[sortBy, order]])
-        .skip(skip)
-        .limit(limit)
-        .exec((err, data) => {
+        .sort()
+       // .skip(skip)
+      //.limit(limit)
+        .exec((err, vehicle) => {
             if (err) {
                 return res.status(400).json({
                     error: "Vehicle is not found"
                 });
             }
             res.json({
-                size: data.length,
-                data
+                size: vehicle.length,
+                vehicle
             });
         });
 };
 
 
 
+// this method will search and return vehicle items found in the db
+// the param for this query is either a vehicle model or make or year
+// example  serching for model http://localhost:8000/api/vehicles/searchbar?model=civic
+// example  serching for make http://localhost:8000/api/vehicles/searchbar?make=toytota
+// example  serching for year http://localhost:8000/api/vehicles/searchbar?year=2020
 
 exports.searchbar = (req, res) => {
     // create query object to hold search value and category value
-    const query = {};
+     const query = {};
     // assign search value to query.name
-    //if (req.query) {
-       // query.make = { $regex: req.query.make, $options: 'i'};
-       // query.make = { $regex: req.query.search, $options: 'i' };
-        // assigne category value to query.category
-        /*if (req.query.category && req.query.category != 'All') {
-            query.category = req.query.category;
-        }*/
-        // find the product based on query object with 2 properties
-        // search and category
+     if (req.query.make) {
+        query.make = { $regex: req.query.make, $options: 'i'};
+     }
+     else if(req.query.model)
+     {
+        query.model = { $regex: req.query.model, $options: 'i'};
+     }
+     else if(req.query.year)
+     {
+        query.year = { $regex: req.query.year, $options: 'i'};
+     }
 
-        Vehicle.find(req.make, (err, vehicle) => {
+        Vehicle.find( query ) 
+            .select('-image') // deselect the image since it takes time and space to query
+            .exec((err, vehicle) => {
+           
             if (err) {
                 return res.status(400).json({
-                    error: errorHandler(err)
+                    error: errorHandler(err + "vehicle year,make or model has no Match")
                 });
             }
-            res.json(vehicle);
-        }).select('-photo');
-    //}
+            res.json({ vehicle,size:vehicle.length});
+        })
 };
 
-
-
-
-
-
-
-
-
+/* this function needs testing */
 exports.decreaseQuantity = (req, res, next) => {
     let bulkOps = req.body.order.products.map(item => {
         return {
             updateOne: {
                 filter: { _id: item._id },
-                update: { $inc: { quantity: -item.count, sold: +item.count } }
+                update: { $inc: { invintoryCount: -item.count } }
             }
         };
     });
