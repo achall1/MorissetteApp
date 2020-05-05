@@ -1,10 +1,12 @@
 import React from 'react'
 //import '../Styles/paymentForm_style.css'
 import { Form, Button, Col, Row } from 'react-bootstrap'
+
 const PaymentForm = () => {
     return (
         <div>
-            <Form>
+            <Form onSubmit={() => {alert('Checkout Successful');}}
+            >
                 <h2 id="header">Payment Form</h2>
                 <h4>Billing Address</h4>
                 <Form.Group as={Row}>
