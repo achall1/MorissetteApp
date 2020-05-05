@@ -1,10 +1,12 @@
 import React from 'react'
 //import '../Styles/paymentForm_style.css'
 import { Form, Button, Col, Row } from 'react-bootstrap'
+
 const PaymentForm = () => {
     return (
         <div>
-            <Form>
+            <Form onSubmit={() => {alert('Checkout Successful');}}
+            >
                 <h2 id="header">Payment Form</h2>
                 <h4>Billing Address</h4>
                 <Form.Group as={Row}>
@@ -12,7 +14,7 @@ const PaymentForm = () => {
                         Full Name:
                 </Form.Label>
                     <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control required type="text" />
                     </Col>
                 </Form.Group>
 
@@ -21,7 +23,7 @@ const PaymentForm = () => {
                         Email:
                 </Form.Label>
                     <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control required type="text" />
                     </Col>
                 </Form.Group>
 
@@ -30,7 +32,7 @@ const PaymentForm = () => {
                         Address:
                 </Form.Label>
                     <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control required type="text" />
                     </Col>
                 </Form.Group>
 
@@ -39,7 +41,7 @@ const PaymentForm = () => {
                         City:
                 </Form.Label>
                     <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control required type="text" />
                     </Col>
                 </Form.Group>
 
@@ -48,7 +50,7 @@ const PaymentForm = () => {
                         State:
                 </Form.Label>
                     <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control required type="text" />
                     </Col>
                 </Form.Group>
 
@@ -57,7 +59,7 @@ const PaymentForm = () => {
                         Zip Code:
                 </Form.Label>
                     <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control required type="text" />
                     </Col>
                 </Form.Group>
 
@@ -67,7 +69,7 @@ const PaymentForm = () => {
                         Name on Card:
                 </Form.Label>
                     <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control required type="text" />
                     </Col>
                 </Form.Group>
 
@@ -76,16 +78,16 @@ const PaymentForm = () => {
                         Card Number:
                 </Form.Label>
                     <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control required type="text" />
                     </Col>
                 </Form.Group>
-                
+
                 <Form.Group as={Row}>
                     <Form.Label column sm={2}>
                         Exp. Month:
                 </Form.Label>
                     <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control required type="text" />
                     </Col>
                 </Form.Group>
 
@@ -94,7 +96,7 @@ const PaymentForm = () => {
                         Exp. Year:
                 </Form.Label>
                     <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control required type="text" />
                     </Col>
                 </Form.Group>
 
@@ -103,11 +105,14 @@ const PaymentForm = () => {
                         CVV:
                 </Form.Label>
                     <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control required type="text" />
                     </Col>
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button
+                    variant="primary"
+                    type="submit"
+                >
                     Submit
                 </Button>
             </Form>
