@@ -1,4 +1,5 @@
 import React from 'react'
+import { store } from 'react-notifications-component';
 //import '../Styles/paymentForm_style.css'
 import { Form, Button, Col, Row } from 'react-bootstrap'
 const PaymentForm = () => {
@@ -12,7 +13,7 @@ const PaymentForm = () => {
                         Full Name:
                 </Form.Label>
                     <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control required type="text" />
                     </Col>
                 </Form.Group>
 
@@ -21,7 +22,7 @@ const PaymentForm = () => {
                         Email:
                 </Form.Label>
                     <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control required type="text" />
                     </Col>
                 </Form.Group>
 
@@ -30,7 +31,7 @@ const PaymentForm = () => {
                         Address:
                 </Form.Label>
                     <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control required type="text" />
                     </Col>
                 </Form.Group>
 
@@ -39,7 +40,7 @@ const PaymentForm = () => {
                         City:
                 </Form.Label>
                     <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control required type="text" />
                     </Col>
                 </Form.Group>
 
@@ -48,7 +49,7 @@ const PaymentForm = () => {
                         State:
                 </Form.Label>
                     <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control required type="text" />
                     </Col>
                 </Form.Group>
 
@@ -57,7 +58,7 @@ const PaymentForm = () => {
                         Zip Code:
                 </Form.Label>
                     <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control required type="text" />
                     </Col>
                 </Form.Group>
 
@@ -67,7 +68,7 @@ const PaymentForm = () => {
                         Name on Card:
                 </Form.Label>
                     <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control required type="text" />
                     </Col>
                 </Form.Group>
 
@@ -76,16 +77,16 @@ const PaymentForm = () => {
                         Card Number:
                 </Form.Label>
                     <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control required type="text" />
                     </Col>
                 </Form.Group>
-                
+
                 <Form.Group as={Row}>
                     <Form.Label column sm={2}>
                         Exp. Month:
                 </Form.Label>
                     <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control required type="text" />
                     </Col>
                 </Form.Group>
 
@@ -94,7 +95,7 @@ const PaymentForm = () => {
                         Exp. Year:
                 </Form.Label>
                     <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control required type="text" />
                     </Col>
                 </Form.Group>
 
@@ -103,11 +104,22 @@ const PaymentForm = () => {
                         CVV:
                 </Form.Label>
                     <Col sm={9}>
-                        <Form.Control type="text" />
+                        <Form.Control required type="text" />
                     </Col>
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button
+                    onClick={() => {
+                        store.addNotification({
+                            title: 'Morissette',
+                            message: 'Checkout Successful',
+                            type: 'success',                         // 'default', 'success', 'info', 'warning'
+                            container: 'bottom-left'
+                        })
+                    }}
+                    variant="primary"
+                    type="submit"
+                >
                     Submit
                 </Button>
             </Form>
