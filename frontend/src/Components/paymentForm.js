@@ -1,5 +1,4 @@
 import React from 'react'
-import { store } from 'react-notifications-component';
 //import '../Styles/paymentForm_style.css'
 import { Form, Button, Col, Row } from 'react-bootstrap'
 const PaymentForm = () => {
@@ -109,14 +108,6 @@ const PaymentForm = () => {
                 </Form.Group>
 
                 <Button
-                    onClick={() => {
-                        store.addNotification({
-                            title: 'Morissette',
-                            message: 'Checkout Successful',
-                            type: 'success',                         // 'default', 'success', 'info', 'warning'
-                            container: 'bottom-left'
-                        })
-                    }}
                     variant="primary"
                     type="submit"
                 >
