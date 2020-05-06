@@ -2,19 +2,17 @@ import React , {useState } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import '../Styles/signin_style.css';
 import  axios  from 'axios';
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, useHistory } from 'react-router-dom'
 import Footer from './footer'
 
 
 const Login  = () => {
     const [userEmail, setUserEmail] = useState("");
     const [userPassword, setPassword] = useState("");
+    const history = useHistory();
 
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-
+     
     const sendLogin = async (e) => {
         //This function will send a request through Axios to the backend route
         //check if the user is in the database
@@ -34,14 +32,15 @@ const Login  = () => {
             if(res.status === 200){
                 console.log("Successfully signed in and authenticated");
                 localStorage.setItem('UserAuth', JSON.stringify(res.data));
-                setShow(false)
-            }else if(res.status === 400){
+                setShow(false);
+                history.push('/');
             }
         })
-        .catch(err =>   setShow(true));
+        .catch(err => setShow(true));
     }
     return (
         <div>
+           
              <Route>
                  <div className="header">
                     <h2>Sign into your account!</h2>
