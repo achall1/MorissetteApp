@@ -10,6 +10,11 @@ const Login  = () => {
     const [userEmail, setUserEmail] = useState("");
     const [userPassword, setPassword] = useState("");
 
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
     const sendLogin = async (e) => {
         //This function will send a request through Axios to the backend route
         //check if the user is in the database
@@ -22,8 +27,18 @@ const Login  = () => {
             "email": userEmail,
             "password": userPassword
         })
-        .then(() => console.log("Sign in apprroved"))
-        .catch(err =>  console.log("Axios request failed", err));
+        // You can get the information from the local storage by using JSON.parse()
+        // then you pass in the localStorage.getItem('UserAuth') and then the
+        // properties of the object
+        .then((res) => {
+            if(res.status === 200){
+                console.log("Successfully signed in and authenticated");
+                localStorage.setItem('UserAuth', JSON.stringify(res.data));
+                setShow(false)
+            }else if(res.status === 400){
+            }
+        })
+        .catch(err =>   setShow(true));
     }
     return (
         <div>
@@ -33,12 +48,12 @@ const Login  = () => {
                  </div>
                 <Form>
                         <Form.Group className="elem" as={Row}>
-                            <Form.Label column sm={2}>Username </Form.Label>
+                            <Form.Label column sm={2}>Email </Form.Label>
                             <Col sm={5}>
                             <Form.Control 
                             name="username" 
                             type="text" 
-                            placeholder="Enter username" 
+                            placeholder="Enter email" 
                             onChange = { e => setUserEmail(e.target.value) }/>
                             </Col>
                         </Form.Group>
@@ -53,7 +68,11 @@ const Login  = () => {
                             onChange={ e => setPassword(e.target.value) }/>
                             </Col>
                         </Form.Group>
-
+                        {show ?
+                            <p style={{ color: 'red'}}> The email or password you entered was incorrect! </p>
+                            :
+                            null
+                        }
                         <Button 
                         className="elem" 
                         variant="primary" 
@@ -68,6 +87,7 @@ const Login  = () => {
                 </Form>
                 <Footer />
              </Route>
+
         </div>
     )
 }
