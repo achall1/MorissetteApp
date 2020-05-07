@@ -7,7 +7,6 @@ import VehicleView from './vehicleView';
 
 
 
-
 const BrowseInventory = () => {
 
     const [allVehicles,setallVehicles] = useState ([]);
@@ -45,7 +44,7 @@ const BrowseInventory = () => {
                 </div>
 
                
-                
+                <Footer />
         </div>
     );
 };
