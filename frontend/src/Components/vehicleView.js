@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import VehicleImage from './vehicleImage';
-
+import { Card } from 'react-bootstrap'
 const VehicleView = ({
     product,
     showViewProductButton = true,
@@ -29,20 +29,29 @@ const VehicleView = ({
       };
       return (
         <div className="vehicleView ">
-          <div className="vehicleView-header card-header-1 ">{product.make}</div>
-          <div className="vehicleView-body">
-          
-            <VehicleImage item={product} />
-            <p className="card-p  mt-2">{product.model.substring(0, 100)} </p>
-            <p className="card-p black-10">$ {product.price}</p>
-            <p className="black-9">mileage: {product.milage}</p>
-            <p className="black-8">Added on {product.createdAt}</p>
+          <Card>
+            <Card.Img variant="top" src={`http://localhost:8000/api/vehicle/picture/${product._id}`} />
+            <Card.Body>
+              <Card.Text>
+                <p>
+                  {`${product.model.substring(0, 100)} •  ${product.mileage}K miles`}
+                </p>
+                <p>
+                  {` $${product.price}`}
+                </p>
+              </Card.Text>
+            </Card.Body>
+            <Card.Footer>
+              <small className="text-muted">Last updated 3 mins ago</small>
+            </Card.Footer>
+          </Card>
+
             {showStock(product.invintoryCount)}
             <br />
     
             {showViewButton(showViewProductButton)}
 
-          </div>
+          {/* </div> */}
         </div>
       );
     };
