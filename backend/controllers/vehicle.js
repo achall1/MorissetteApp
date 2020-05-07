@@ -192,6 +192,30 @@ exports.searchbar = (req, res) => {
         })
 };
 
+
+/**
+ * find all cars and return them by order using model/make/year or any other fiels
+ * the query url is like below
+ * http://localhost:8000/api/vehicles/findall
+ */
+
+exports.findallvehicles = (req, res) => {
+    
+   let order = req.query.order = 'asc';
+    Vehicle.find(req.id)
+        .select('-image') 
+         .sort(order)
+        .limit(100)
+        .exec((err, vehicles) => {
+            if (err) {
+                return res.status(400).json({
+                    error: 'The Vehicles are not found in the DB'
+                });
+            }
+            res.json(vehicles);
+        });
+};
+
 /* this function needs testing */
 exports.decreaseQuantity = (req, res, next) => {
     let bulkOps = req.body.order.products.map(item => {

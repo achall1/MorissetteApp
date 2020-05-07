@@ -4,16 +4,16 @@ const uuidv1 = require('uuid/v1')
 
 const customerSchema = new mongoose.Schema(
     {
-        first_name: {type: String,trim:true,required:false,maxlength:32},
-        last_name: {type: String,trim:true,required:false,maxlength:32},
-        email: {type: String,trim:true,required:false,unique:20},
-        crypted_password: {type: String,required:false},
+        first_name: {type: String,trim:true,required:true,maxlength:32},
+        last_name: {type: String,trim:true,required:true,maxlength:32},
+        email: {type: String,trim:true,required:true,unique:20},
+        crypted_password: {type: String,required:true},
         salt:String,
         role: {
                 type: Number,
                 default: 0 // nonadmin=0 // admin=1 //tradein= 2
              },
-        StreetAddress:{type: String, trim:true, default:""},
+        Street_Address:{type: String, trim:true, default:""},
         DOB:{type: String, trim:true, default:""},
         State: {type: String, trim:true, default:""},
         City: {type: String, trim:true, default:""},

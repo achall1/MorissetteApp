@@ -4,7 +4,7 @@ const router = express.Router()
 const {requireSignin,isAuth,isAdmin} = require('../controllers/auth');
 // to create a new car,search,read,get picture 
 
-const {create, vehicleById ,read, remove, image, searchByPrice,searchbar} = require('../controllers/vehicle');
+const {create, vehicleById ,read, remove, image, searchByPrice,searchbar,findallvehicles} = require('../controllers/vehicle');
 
 // import from the controller for customer where the logic is handled for sign-up/out process
 const {customerById} = require('../controllers/customer');
@@ -32,6 +32,7 @@ router.post("/vehicles/searchbar", searchbar);
 // send the vehicles filterd by price  to the frontend 
 router.post("/vehicles/searchprice", searchByPrice);
 
-
+//find an retrun all vehicle sorted by the model name in order
+router.get("/vehicles/findall", findallvehicles);
 
 module.exports = router

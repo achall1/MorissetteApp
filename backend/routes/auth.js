@@ -16,7 +16,6 @@ router.get("/signout", signout);
 router.get('/about',requireSignin,(req,res) => {
     res.send("about page")
 })
-
-//router.put('/update-account', updateAccount,requireSignin);
+router.post('/update-account', updateAccount);
 
 module.exports = router

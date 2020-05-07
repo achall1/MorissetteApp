@@ -47,7 +47,7 @@ exports.signin = (req,res) =>
         // generate a signed token with userID and jwt-code
         const token = jwt.sign({_id: customer._id}, process.env.JWT_CODE)
         // PERSIST the token as 't' in cookie with expiry date
-        res.cookie('t',token,{ expire:new Date() + 9999})
+        res.cookie('t',token /*,{ expire:new Date() + 9999}*/)
         // return responce with user and token to frontend
         const {_id,name,email,role} = customer
         return res.json({token, customer: {_id,email,name,role}})
@@ -93,4 +93,54 @@ exports.isAdmin =( req, res, next) =>{
     })
    }
    next()
+}
+
+//This function will update the users account
+
+exports.updateAccount = (req, res) => {
+    const currEmail = req.body.currentEmail;
+
+    Customer.findOne( {currEmail}, (err, customer) => {
+        if(err || !customer){
+            return res.status(400).json({
+                error:"Error changing your information"
+            });
+        }
+        const newFirstName = req.body.firstName != '' ? req.body.firstName : customer.firstName;
+        const newLastName = req.body.lastName != '' ? req.body.lastName : customer.lastName;
+        const newEmail = req.body.email != '' ? req.body.email : customer.email;
+        const newDOB = req.body.DOB != '' ? req.body.DOB : customer.DOB;
+        const newState = req.body.state != '' ? req.body.state : customer.state;
+        const newZip = req.body.zip != '' ? req.body.zip : customer.zip;
+        const newCreditCard = req.body.creditCard != '' ? req.body.creditCard : customer.creditCard;
+        const newCVV = req.body.CVV != '' ? req.body.CVV : customer.CVV;
+        const newExpirationDate = req.body.expirationDate != '' ? req.body.expirationDate: customer.expirationDate;
+        const newAutoInsurer = req.body.autoInsurer != '' ? req.body.autoInsurer : customer.autoInsurer;
+        const newSSN = req.body.SSN != '' ? req.body.SSN : customer.SSN;
+
+        const newUserInformation = {
+            "firstName": newFirstName,
+            "lastName": newLastName,
+            "email": newEmail,
+            "password": Customer.password,
+            "DOB": newDOB,
+            "state": newState,
+            "zip": newZip,
+            "creditCard": newCreditCard,
+            "CVV": newCVV,
+            "expirationDate": newExpirationDate,
+            "autoInsurer": newAutoInsurer,
+            "Last4SSN": newSSN
+        }; 
+        const newCustomer = new Customer(newUserInformation);
+        
+        newCustomer.save((err,customer)=>{
+            if(err){return res.status(400).json({
+                err: errorHandler(err)
+            })}
+            // hide password encryption from being displayed
+           
+        });
+    })
+    res.status(200).send("Account updated")
 }

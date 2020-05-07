@@ -1,0 +1,14 @@
+#homeBanner {
+    background: #005EFF;
+    height: 200px;
+    color: #FFEA47;
+    font-size: 48px;
+}
+
+.userSearch {
+    margin-top: 150px;
+}
+
+#radioelem {
+    margin-left: 20px;
+}
