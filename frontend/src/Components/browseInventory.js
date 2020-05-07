@@ -6,8 +6,6 @@ import { getVehicles } from './fetchvehicles';
 import VehicleView from './vehicleView';
 
 
-
-
 const BrowseInventory = () => {
 
     const [allVehicles,setallVehicles] = useState ([]);
@@ -34,18 +32,18 @@ const BrowseInventory = () => {
 
     return ( 
         <div>
+            <h2> New Arrivals cars </h2> 
                 <div>  
-                    <h2> New Arrivals cars </h2> 
                 {    //vehicleView
                 allVehicles.map((product, i) => (
-                <div key={i} className="col-4 mb-3">
+                <div key={i} style={{display: 'inline-block'}} className="col-4 mb-3">
                 <VehicleView product={product} />
                  </div>
                  ))}
                 </div>
 
                
-                
+                <Footer />
         </div>
     );
 };
