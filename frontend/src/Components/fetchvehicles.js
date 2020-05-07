@@ -27,3 +27,15 @@ export const getVehicles = () => {
     .catch( err => console.log("Axios vehicle request failed", err));
 };
 */
+
+export const read = productId => {
+    return fetch(`http://localhost:8000/api/vehicle/${productId}`, {
+        method: "GET"
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+
