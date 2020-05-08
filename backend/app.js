@@ -15,6 +15,7 @@ const vehicleRoutes = require('./routes/vehicle')
 const financeRoutes = require('./routes/finance')
 const tradeinRoutes = require('./routes/tradein')
 const orderRoutes = require('./routes/order');
+const braintreeRoutes = require('./routes/briantree');
 
 
 
@@ -55,6 +56,7 @@ app.use('/api',customerRoutes)
 app.use('/api',vehicleRoutes)
 app.use('/api',financeRoutes)
 app.use('/api',tradeinRoutes)
+app.use('/api', braintreeRoutes);
 app.use('/api', orderRoutes);
 
 // import port number from .env file

@@ -26,17 +26,25 @@ const SingleVehicle = props => {
     }, [props]);
 
     return (
-        <div>
-            model={product && product.model}
-            make={product && product.make }
-            className="container-fluid"
-        >
-            <div className="row">
-                <div className="col-8">
-                    {product && product.make && <VehicleView product={product} showViewProductButton={false} />}
-                </div>
 
-            </div>
+            <div className="vehicleView ">
+          <Card>
+            {shouldRedirect(redirect)}
+            <Card.Img variant="top" src={`http://localhost:8000/api/vehicle/picture/${product._id}`} />
+            <Card.Body>
+              <Card.Text>
+                <p>
+                  {`${product.model.substring(0, 100)} •  ${product.mileage}K miles`}
+                </p>
+                <p>
+                  {` $${product.price}`}
+                </p>
+              </Card.Text>
+            </Card.Body>
+            <Card.Footer>
+              <small className="text-muted">Last updated 3 mins ago</small>
+            </Card.Footer>
+          </Card>
        </div>
     );
 };

@@ -6,7 +6,7 @@ const {requireSignin,isAuth,isAdmin} = require('../controllers/auth');
 // import from the controller for customer where the logic is handled for sign-up/out process
 const {customerById,update} = require('../controllers/customer');
 
-router.get('/secret/:customerId',requireSignin,isAuth,isAdmin,(req,res) =>{
+router.get('/user/:customerId',requireSignin,isAuth,(req,res) =>{
             res.json({
                 customer: req.profile
             })

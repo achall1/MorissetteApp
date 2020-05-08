@@ -17,12 +17,13 @@ router.post(
     "/order/create/:customerId",
     requireSignin,
     isAuth,
-    addOrderToUserHistory,
-    decreaseQuantity,
+    //addOrderToUserHistory,
+    //decreaseQuantity,
     create
 );
 
 router.get("/order/list/:customerId", requireSignin, isAuth, isAdmin, listOrders);
+
 router.get(
     "/order/status-values/:customerId",
     requireSignin,

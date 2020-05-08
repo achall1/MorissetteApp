@@ -79,7 +79,7 @@ exports.isAuth = (req,res,next) =>
     if(!customer)
     {
        return res.status(403).json({
-            error: "access not allowed,your not an admin"
+            error: "access not allowed,can only access your info"
        })
     }
     next()
