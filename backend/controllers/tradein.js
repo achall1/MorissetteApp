@@ -3,6 +3,27 @@ const _ = require('lodash')
 const fs = require('fs')
 const {errorHandler} = require('../helpers/dbError')
 const TradeIn = require('../models/tradein')
+import axios from 'axios';
+
+//Get all trade-in Forms
+export const getAllTradeins = () => async dispatch => {
+    dispatch({ type: "CLEAR TRADE-INS" });
+  
+    try {
+      const res = await axios.get('/routes/tradein');
+  
+      dispatch({
+        type: "GET TRADE-INS",
+        payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: "GET TRADE-IN ERROR",
+        payload: { msg: err.response.statusText, status: err.response.status }
+      });
+    }
+  };
+
 
 //find trade-in vehicle by id
 exports.tradeinById =(req,res,next,id) =>
@@ -44,8 +65,6 @@ exports.remove = (req, res) =>
     })
    
 }
-
-
 
 
 // used to handle form data and image coming from client 
