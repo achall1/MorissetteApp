@@ -3,8 +3,7 @@ const _ = require('lodash')
 const fs = require('fs')
 const {errorHandler} = require('../helpers/dbError')
 const Vehicle = require('../models/vehicle')
-
-//find vehicle  by id
+//find vehicle by id
 exports.vehicleById =(req,res,next,id) =>
 {
     Vehicle.findById(id).exec((err, vehicle) =>{
@@ -216,9 +215,6 @@ exports.findallvehicles = (req, res) => {
             res.json(vehicles);
         });
 };
-
-
-
 
 /* this function needs testing */
 exports.decreaseQuantity = (req, res, next) => {
