@@ -15,8 +15,8 @@ const Login  = () => {
     const sendLogin = async (e) => {
         //This function will send a request through Axios to the backend route
         //check if the user is in the database
-        console.log("Email: ", userEmail);
-        console.log("Password: ", userPassword);
+       // console.log("Email: ", userEmail);
+        //console.log("Password: ", userPassword);
 
         e.preventDefault();
         axios.post('http://localhost:8000/api/signin', 
@@ -29,7 +29,7 @@ const Login  = () => {
         // properties of the object
         .then((res) => {
             if(res.status === 200){
-                console.log("Successfully signed in and authenticated");
+               // console.log("Successfully signed in and authenticated");
                 localStorage.setItem('UserAuth', JSON.stringify(res.data));
                 setShow(false);
                 history.push('/');

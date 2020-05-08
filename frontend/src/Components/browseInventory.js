@@ -41,8 +41,6 @@ const BrowseInventory = () => {
                  </div>
                  ))}
                 </div>
-
-               
                 <Footer />
         </div>
     );

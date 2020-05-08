@@ -1,11 +1,14 @@
 import React from 'react'
 //import '../Styles/paymentForm_style.css'
 import { Form, Button, Col, Row } from 'react-bootstrap'
-
+import { removeItem } from './cartHelpers';
 const PaymentForm = () => {
+    
     return (
         <div>
-            <Form onSubmit={() => {alert('Checkout Successful');}}
+            <Form onSubmit={() => {
+                alert('Checkout Successful') ;
+            } }
             >
                 <h2 id="header">Payment Form</h2>
                 <h4>Billing Address</h4>
