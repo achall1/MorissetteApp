@@ -11,6 +11,8 @@ router.get('/secret/:customerId',requireSignin,isAuth,isAdmin,(req,res) =>{
                 customer: req.profile
             })
 })
+
+router.get('/user/:customerId', requireSignin)
 // update should be here need editing 
 
 //router.put('/secret/:customerId',requireSignin,(req,res) =>{
