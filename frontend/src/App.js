@@ -15,7 +15,7 @@ import AccountInformation from './Components/AccountInformation'
 
 function App() {
   return (
-      <div style={{textAlign: "center"}}>
+      <div>
         <Header />
         <Router>
             <Switch>

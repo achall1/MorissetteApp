@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../Styles/account_info_styles.css'
 const AccountInformation = () => {
     const [stopLoop, setStopLoop] = useState(0);
     const [name, setName] = useState('');
@@ -11,7 +12,7 @@ const AccountInformation = () => {
     const [zipCode, setZipCode] = useState('')
     const [ssn, setSSN] = useState('');
     const [cvv, setCVV] = useState('326556')
-    useEffect( () => {
+    useEffect(() => {
         const userObj = JSON.parse(localStorage.getItem('UserAuth'));
         const userid = userObj.customer._id
 
@@ -21,6 +22,7 @@ const AccountInformation = () => {
             }
         }).then((res) =>{
             setName(res.data.customer.name);
+            //should be setName(res.data.customer.first_name + ' ' + res.data.customer.last_name)
             setEmail(res.data.customer.email);
             setCreditCard(res.data.customer.creditCard);
             setBuyHistory(res.data.customer.buyHistory);
@@ -28,22 +30,29 @@ const AccountInformation = () => {
             setZipCode(res.data.customer.Zip);
             setSSN(res.data.customer.Last4SSN);
             setCVV(res.data.customer.CVV);
+            //needs setInsurer(res.data.customer.autoInsurer)
         })
         .catch((err) => console.log(err))
     }, [stopLoop])
     return (
         <div>
-           <h1><strong>Customer Information</strong></h1>
-           <hr></hr>
-           <p>Name: {name} </p>
-           <p>Email: {email} </p>
-           <p>Vehicle(s): {buyHistory} </p>
-           <p>Credit Card: #: {creditCard} </p>
-           <p>CVV: {cvv} </p>
-           <p>Home Address: {address} </p>
-           <p>Auto Insurer: {insurer} </p>
-           <p>Zip code: {zipCode} </p>
-           <p>Last 4 SSN #: {ssn} </p>
+           <h1 style={{textAlign: 'center', backgroundColor: 'blue', paddingBottom: '20px'}}>
+               <strong>Customer Information</strong>
+               </h1>
+           <hr className='customer-hr'></hr>
+          <div id="customer-info">
+           <p className="customer-attributes">Name: {name} </p>
+           <p className="customer-attributes">Email: {email} </p>
+           <p className="customer-attributes">Vehicle(s): {buyHistory} </p>
+           <p className="customer-attributes">Credit Card: #: {creditCard} </p>
+           <p className="customer-attributes">CVV: {cvv} </p>
+           <p className="customer-attributes">Home Address: {address} </p>
+           <p className="customer-attributes">Auto Insurer: {insurer} </p>
+           <p className="customer-attributes">Zip code: {zipCode} </p>
+           <p className="customer-attributes">Last 4 SSN #: {ssn} </p>
+           <button className="update-account-bttn"> Update Account </button>
+          </div>
+          
         </div>
     )
 }
