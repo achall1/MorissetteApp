@@ -11,6 +11,7 @@ import DeliveryStatus from './Components/deliveryStatus';
 import AccountSettings from './Components/accountSettings';
 import TradeIn from './Components/trade_in';
 import PaymentForm from './Components/paymentForm';
+import FinanceForm from './Components/financeForm';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
               <Route exact path="/edit-account" component={editAccount} />
               <Route exact path="/Trade-In" component={TradeIn} />
               <Route exact path="/paymentForm" component={PaymentForm} />
+              <Route exact path="/financeForm" component={FinanceForm} />
             </Switch>
         </Router>
     </div>
