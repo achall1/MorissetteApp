@@ -8,7 +8,7 @@ const AccountSettings = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     return (
-        <div>
+        <div style={{textAlign: 'center'}}>
             <div>
                 <h1 className="header">Account Settings</h1>
             </div>
@@ -18,12 +18,13 @@ const AccountSettings = () => {
                         <Nav.Link className="content" onClick={() => setShow(true)}>Request Delivery Status</Nav.Link>
                     </li>
                     <li className="listelem">
-                        <Nav.Link className="content" href="/edit-account">Edit your account</Nav.Link>
+                        <Nav.Link className="content" href="/account-information">View your account</Nav.Link>
                     </li>
                     <li className="listelem">
                         <Nav.Link className="content" href="/Trade-In">Trade-In Vehicle</Nav.Link>
                     </li>
                 </ul>
+
                 {/* //This is the modal for the registered user to see when they click 
                 //Check delivery status */}
                 <Modal show={show} onHide={handleClose} style={{ marginTop: "50px"}}>

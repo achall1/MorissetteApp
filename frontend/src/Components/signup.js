@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Form, Button, Col, Row } from 'react-bootstrap'
 import axios from 'axios'
 import Footer from './footer'
@@ -9,8 +10,10 @@ const SignUp = () => {
     const [userLastName, setLastName] = useState("");
     const [userEmail, setEmail] = useState("");
     const [userPassword, setPassword] = useState("");
+    const history = useHistory();
 
     const signUpUser = (e) => {
+            //Here we will sign up the user then log them in
             e.preventDefault();
             axios.post('http://localhost:8000/api/signup', 
             {
@@ -19,8 +22,27 @@ const SignUp = () => {
                 "email": userEmail,
                 "password": userPassword
             })
-            .then( () => console.log("User signed up"))
+            .then(() => handleNewUser())
             .catch( err => console.log("Axios request failed", err));
+    }
+
+    const handleNewUser = () => {
+            //In this function, we will log in the user automatically and
+            // redirect them to the homescreen
+            axios.post('http://localhost:8000/api/signin',
+            {
+            "email": userEmail,
+            "password": userPassword
+            })
+            .then((res) => {
+                if(res.status === 200){
+                    console.log("Successfully signed in and authenticated");
+                    localStorage.setItem('UserAuth', JSON.stringify(res.data));
+                    history.push('/');
+                }
+            })
+            //I don't think there will be an error, but we should catch it just incase.
+            .catch(err => console.log(err));
     }
 
     return (

@@ -1,0 +1,27 @@
+#customer-info {
+    width: 80%;
+    padding: 30px;
+    margin: 15px;
+    float: left;
+}
+
+.customer-attributes {
+    font-size: 30px;
+
+}
+
+.update-account-bttn {
+    margin-left: 55%;
+
+}
+
+.customer-hr {
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 90%;
+}
+
+.update-account-bttn {
+    background-color: lightskyblue;
+    border-radius: 25px;
+}

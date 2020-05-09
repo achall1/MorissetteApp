@@ -47,7 +47,7 @@ exports.signin = (req,res) =>
         // generate a signed token with userID and jwt-code
         const token = jwt.sign({_id: customer._id}, process.env.JWT_CODE)
         // PERSIST the token as 't' in cookie with expiry date
-        res.cookie('t',token,{ expire:new Date() + 9999})
+        res.cookie('t',token /*,{ expire:new Date() + 9999}*/)
         // return responce with user and token to frontend
         const {_id,name,email,role} = customer
         return res.json({token, customer: {_id,email,name,role}})
@@ -79,7 +79,7 @@ exports.isAuth = (req,res,next) =>
     if(!customer)
     {
        return res.status(403).json({
-            error: "access not allowed,your not an admin"
+            error: "access not allowed,can only access your info"
        })
     }
     next()
