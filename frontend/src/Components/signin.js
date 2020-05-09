@@ -2,7 +2,7 @@ import React , {useState } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import '../Styles/signin_style.css';
 import  axios  from 'axios';
-import { Route, Link, useHistory } from 'react-router-dom'
+import { Route, Link, useHistory, Redirect } from 'react-router-dom'
 import Footer from './footer'
 
 
@@ -11,6 +11,7 @@ const Login  = () => {
     const [userPassword, setPassword] = useState("");
     const history = useHistory();
     const [show, setShow] = useState(false);
+    const [redirectHome, setRedirectHome] = useState(false);
      
     const sendLogin = async (e) => {
         //This function will send a request through Axios to the backend route
@@ -37,14 +38,17 @@ const Login  = () => {
         })
         .catch(err => setShow(true));
     }
+    if(redirectHome){
+        return <Redirect to='/' />
+    }
     return (
-        <div>
+        <div style={{textAlign: 'center'}}>
            
              <Route>
                  <div className="header">
                     <h2>Sign into your account!</h2>
                  </div>
-                <Form>
+                <Form onSubmit={sendLogin}>
                         <Form.Group className="elem" as={Row}>
                             <Form.Label column sm={2}>Email </Form.Label>
                             <Col sm={5}>
@@ -75,7 +79,7 @@ const Login  = () => {
                         className="elem" 
                         variant="primary" 
                         type="submit" 
-                        onClick={sendLogin}>
+                        >
                             Sign In
                         </Button>
                         <br></br>

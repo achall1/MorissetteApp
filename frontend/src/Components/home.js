@@ -13,7 +13,7 @@ const Home = () => {
         }
     }
     return (
-        <div>
+        <div style={{textAlign: 'center'}}>
             <div id="homeBanner"> Get a new or used car delivered directly to your home!</div>
             <div className="userSearch">
                 <input

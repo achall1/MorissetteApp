@@ -33,7 +33,7 @@ class editAccount extends React.Component {
      }
      render() {
         return (
-                <div>
+                <div style={{textAlign: 'center'}}>
                     <h2 className="editAccountHeader">Edit Your Account</h2>
                     <Form className="editAccountForm">
                     <Form.Group as={Row}>

@@ -6,14 +6,12 @@ import { getVehicles } from './fetchvehicles';
 import VehicleView from './vehicleView';
 
 
-const BrowseInventory = () => {
+const BrowseInventory = (props) => {
 
     const [allVehicles,setallVehicles] = useState ([]);
-    
-
     const [error, setError] = useState(false);
+    const [refresh, setRefresh] = useState(false)
 
-    
     const loadallVehicles = () => {
         getVehicles().then(data => {
             if (data.error) {
@@ -24,12 +22,10 @@ const BrowseInventory = () => {
         });
     };
 
-    
-
     useEffect(() => {
         loadallVehicles();
-    }, []);
 
+    }, []);
     return ( 
         <div>
             <h2> New Arrivals cars </h2> 
