@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import '../Styles/header_style.css';
 import { Nav, Navbar, Form} from 'react-bootstrap'
-import { SignedInImage } from './image.js'
-import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 const signedin = require('../person.png')
 const cart =  require('../cart.png')

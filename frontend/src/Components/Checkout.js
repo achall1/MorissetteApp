@@ -1,7 +1,5 @@
 import { emptyCart } from './cartHelpers';
 import React, { useState, useEffect } from 'react';
-import Header from './header'
-import Footer from './footer'
 import { Link } from 'react-router-dom';
 import { createOrder,processPayment,getBraintreeClientToken,
     isAuthenticated } from './fetchvehicles';

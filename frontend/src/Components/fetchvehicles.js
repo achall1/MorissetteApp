@@ -1,6 +1,3 @@
-
-
-
 export const getVehicles = () => {
     return fetch(`http://localhost:8000/api/vehicles/findall`, {
         method: "GET"

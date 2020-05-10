@@ -1,5 +1,4 @@
 import React from 'react'
-//import '../Styles/financeForm_style.css'
 import { Form, Button, Col, Row } from 'react-bootstrap'
 
 const FinanceForm = () => {
