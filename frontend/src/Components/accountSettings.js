@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Footer from './footer'
+import Header from './header'
 import { Nav } from 'react-bootstrap'
 import '../Styles/account_settings_styles.css' 
 import { Modal, Button } from 'react-bootstrap'
@@ -9,6 +10,7 @@ const AccountSettings = () => {
     const handleClose = () => setShow(false);
     return (
         <div style={{textAlign: 'center'}}>
+            <Header />
             <div>
                 <h1 className="header">Account Settings</h1>
             </div>

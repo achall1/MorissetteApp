@@ -1,4 +1,6 @@
 import React from 'react'
+import Header from  './header'
+import Footer from './footer'
 //import '../Styles/paymentForm_style.css'
 import { Form, Button, Col, Row } from 'react-bootstrap'
 import { removeItem } from './cartHelpers';
@@ -6,6 +8,7 @@ const PaymentForm = () => {
     
     return (
         <div>
+            <Header />
             <Form onSubmit={() => {
                 alert('Checkout Successful') ;
             } }
@@ -119,6 +122,7 @@ const PaymentForm = () => {
                     Submit
                 </Button>
             </Form>
+            <Footer />
         </div>
     )
 }

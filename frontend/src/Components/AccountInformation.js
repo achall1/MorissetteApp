@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Header from './header';
+import Footer from './footer'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios';
 import '../Styles/account_info_styles.css'
@@ -43,23 +45,26 @@ const AccountInformation = () => {
     }
     return (
         <div>
-           <h1 style={{textAlign: 'center', backgroundColor: 'blue', paddingBottom: '20px'}}>
-               <strong>Customer Information</strong>
-               </h1>
-           <hr className='customer-hr'></hr>
-            <div id="customer-info">
-                <p className="customer-attributes">Name: {name} </p>
-                <p className="customer-attributes">Email: {email} </p>
-                <p className="customer-attributes">Vehicle(s): {buyHistory} </p>
-                <p className="customer-attributes">Credit Card: #: {creditCard} </p>
-                <p className="customer-attributes">CVV: {cvv} </p>
-                <p className="customer-attributes">Home Address: {address} </p>
-                <p className="customer-attributes">Auto Insurer: {insurer} </p>
-                <p className="customer-attributes">Zip code: {zipCode} </p>
-                <p className="customer-attributes">Last 4 SSN #: {ssn} </p>
-                <button className="update-account-bttn" onClick={ () => setEditAcc(true)}> Update Account </button>
-            </div>
-          
+            <Header />
+                <div>
+                    <h1 style={{textAlign: 'center', backgroundColor: 'blue', paddingBottom: '20px'}}>
+                        <strong>Customer Information</strong>
+                        </h1>
+                    <hr className='customer-hr'></hr>
+                        <div id="customer-info">
+                            <p className="customer-attributes">Name: {name} </p>
+                            <p className="customer-attributes">Email: {email} </p>
+                            <p className="customer-attributes">Vehicle(s): {buyHistory} </p>
+                            <p className="customer-attributes">Credit Card: #: {creditCard} </p>
+                            <p className="customer-attributes">CVV: {cvv} </p>
+                            <p className="customer-attributes">Home Address: {address} </p>
+                            <p className="customer-attributes">Auto Insurer: {insurer} </p>
+                            <p className="customer-attributes">Zip code: {zipCode} </p>
+                            <p className="customer-attributes">Last 4 SSN #: {ssn} </p>
+                            <button className="update-account-bttn" onClick={ () => setEditAcc(true)}> Update Account </button>
+                        </div>
+                </div>
+            <Footer />
         </div>
     )
 }
