@@ -4,12 +4,13 @@ import Footer from './footer'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios';
 import '../Styles/account_info_styles.css'
+import './fetchvehicles.js'
 const AccountInformation = () => {
     const [stopLoop, setStopLoop] = useState(0);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('')
     const [creditCard, setCreditCard] = useState('')
-    const [buyHistory, setBuyHistory] = useState('')
+    const [buyHistory, setBuyHistory] = useState([])
     const [address, setAddress] = useState('')
     const [insurer, setInsurer] = useState('Nationwide')
     const [zipCode, setZipCode] = useState('')
@@ -39,6 +40,12 @@ const AccountInformation = () => {
         })
         .catch((err) => console.log(err))
     }, [stopLoop])
+
+    const getPurchasedVehicles = () => {
+        let vehicleHistory = [];
+        
+        return vehicleHistory
+    }
 
     if(editAcc){
         return <Redirect to='/edit-account'/>
