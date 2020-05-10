@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Footer from './footer'
 import '../Styles/home_style.css';
+import Header from './header'
 
 const Home = () => {
     const [searchText, setSearchText] = useState("");
@@ -14,6 +15,7 @@ const Home = () => {
     }
     return (
         <div style={{textAlign: 'center'}}>
+            <Header />
             <div id="homeBanner"> Get a new or used car delivered directly to your home!</div>
             <div className="userSearch">
                 <input

@@ -2,14 +2,14 @@ import React , {useState } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import '../Styles/signin_style.css';
 import  axios  from 'axios';
-import { Route, Link, useHistory, Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import Footer from './footer'
+import Header from './header'
 
 
 const Login  = () => {
     const [userEmail, setUserEmail] = useState("");
     const [userPassword, setPassword] = useState("");
-    const history = useHistory();
     const [show, setShow] = useState(false);
     const [redirectHome, setRedirectHome] = useState(false);
      
@@ -33,7 +33,7 @@ const Login  = () => {
                // console.log("Successfully signed in and authenticated");
                 localStorage.setItem('UserAuth', JSON.stringify(res.data));
                 setShow(false);
-                history.push('/');
+                setRedirectHome(true)
             }
         })
         .catch(err => setShow(true));
@@ -43,9 +43,8 @@ const Login  = () => {
     }
     return (
         <div style={{textAlign: 'center'}}>
-           
-             <Route>
-                 <div className="header">
+           <Header />
+           <div className="header">
                     <h2>Sign into your account!</h2>
                  </div>
                 <Form onSubmit={sendLogin}>
@@ -88,8 +87,6 @@ const Login  = () => {
                         <Link to="/signup"> Sign up</Link>
                 </Form>
                 <Footer />
-             </Route>
-
         </div>
     )
 }

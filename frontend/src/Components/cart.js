@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Header from './header'
+import Footer from './footer'
 import { Link } from 'react-router-dom';
 import { getCart } from './cartHelpers';
 import VehicleView from './vehicleView';
@@ -19,28 +21,30 @@ const Cart = () => {
 
     const showItems = items => {
         return (
-            
-            <Card >
-                <Card.Body>
             <div>
-                <h2>Your cart has {`${items.length}`} items</h2>
-                <hr />
-                {items.map((product, i) => (
-                   
+                <Card>
+                <Card.Body>
+                    <div>
+                        <h2>Your cart has {`${items.length}`} items</h2>
+                        <hr />
+                        {items.map((product, i) => (
                         
-                             <VehicleView 
-                                key={i}
-                                product={product} 
-                                showAddToCartButton={false}
-                                cartUpdate={true}
-                                showRemoveProductButton={true}
-                                setRun={setRun}
-                                run={run}
-                             />
-                ))}
+                                
+                                    <VehicleView 
+                                        key={i}
+                                        product={product} 
+                                        showAddToCartButton={false}
+                                        cartUpdate={true}
+                                        showRemoveProductButton={true}
+                                        setRun={setRun}
+                                        run={run}
+                                    />
+                        ))}
+                    </div>
+                    </Card.Body>
+                    </Card>
+            
             </div>
-            </Card.Body>
-            </Card>
         );
     };
 
@@ -52,6 +56,7 @@ const Cart = () => {
 
     return (
         <div>
+            <Header />
            <div className="jumbotron"></div>
            <h2>"Shopping Cart"</h2>
            <p className="lead"> "Manage your cart items. Add remove checkout or continue shopping."</p>
@@ -67,6 +72,7 @@ const Cart = () => {
                     <hr />              
                 </div>
             </div>
+            <Footer />
        </div>
     );
 };

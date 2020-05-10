@@ -1,6 +1,7 @@
 import React from 'react'
 import {Form, Col, Button, Row} from 'react-bootstrap'
 import Footer from './footer';
+import Header from './header'
 import '../Styles/editAccount_style.css'
 
 class editAccount extends React.Component {
@@ -33,8 +34,9 @@ class editAccount extends React.Component {
      }
      render() {
         return (
-                <div style={{textAlign: 'center'}}>
-                    <h2 className="editAccountHeader">Edit Your Account</h2>
+            <div style={{textAlign: 'center'}}>
+                <Header />
+                <h2 className="editAccountHeader">Edit Your Account</h2>
                     <Form className="editAccountForm">
                     <Form.Group as={Row}>
                         <Form.Label column sm={2}>
@@ -205,7 +207,7 @@ class editAccount extends React.Component {
                         Update Account
                     </Button>
                 </Form>
-                <Footer />
+                <Footer />       
             </div>
         );
     }
