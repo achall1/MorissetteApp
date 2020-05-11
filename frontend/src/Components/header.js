@@ -4,6 +4,10 @@ import { Nav, Navbar, Form} from 'react-bootstrap'
 import axios from 'axios'
 const signedin = require('../person.png')
 const cart =  require('../cart.png')
+let link = '/account-settings'
+if(JSON.parse(localStorage.getItem('UserAuth')).customer.role == 1){
+    link = '/admin-menu'
+} 
 
 const Header = () => {
     const [signedOut, setSignout] = useState(false);
@@ -28,7 +32,7 @@ const Header = () => {
                 <Nav.Link href="/cart"><img style={{height: '20px', width: '20px'}} src={cart} alt="cartObj" /></Nav.Link>
                     {
                         localStorage.getItem('UserAuth') ?
-                        <Nav.Link href='/account-settings'>  <img style={{height: '20px', width: '20px'}} src={signedin} alt="personObj" /> </Nav.Link> :
+                        <Nav.Link href={link}>  <img style={{height: '20px', width: '20px'}} src={signedin} alt="personObj" /> </Nav.Link> :
                         <Nav.Link href="/signin"> Signin </Nav.Link>
                     }
 

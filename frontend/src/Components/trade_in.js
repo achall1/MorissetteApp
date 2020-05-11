@@ -46,7 +46,7 @@ const TradeIn = () => {
             }
         }
 
-        axios.post(`http://localhost:8000/api/tradein/create/${token}`, formdata, headers)
+        axios.post(`http://localhost:8000/api/tradein/create/${_id}`, formdata, headers)
         .then((res) => {
             setRedirect(true)
         }).catch((err) => console.log(err.response))
@@ -122,7 +122,7 @@ const TradeIn = () => {
                         Pictures of Vehicle: 
                         </Form.Label>
                         <Col sm={9}>
-                        <Form.Control  type="file" onChange={(e) => setPictures(e.target.files[0])} />
+                        <Form.Control required='required' type="file" onChange={(e) => setPictures(e.target.files[0])} />
                         </Col>
                     </Form.Group>
 

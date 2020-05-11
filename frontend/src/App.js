@@ -12,6 +12,8 @@ import TradeIn from './Components/trade_in';
 import PaymentForm from './Components/paymentForm';
 import FinanceForm from './Components/financeForm';
 import AccountInformation from './Components/AccountInformation'
+import AdminMenu from './Components/AdminComponents/AdminMenu'
+import UpdateInventory from './Components/AdminComponents/UpdateVehicleInventory'
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
               <Route exact path="/financeForm" component={FinanceForm} />
               <Route exact path='/account-information' component={AccountInformation} />
               <Route exact path='/trade-in-form' component={TradeIn} />
+              <Route exact path='/admin-menu' component={AdminMenu} />
+              <Route exact path='/update-inventory' component={UpdateInventory} />
             </Switch>
         </Router>
     </div>

@@ -30,7 +30,7 @@ const BrowseInventory = (props) => {
     return ( 
         <div>
             <Header />
-                <h2> New Arrivals cars </h2> 
+                <h2 style={{textAlign: 'center', marginBottom: "20px"}}> Our Current Inventory </h2> 
                     <div>  
                     {    //vehicleView
                     allVehicles.map((product, i) => (
