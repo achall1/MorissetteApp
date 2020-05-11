@@ -29,6 +29,7 @@ function App() {
               <Route exact path="/paymentForm" component={PaymentForm} />
               <Route exact path="/financeForm" component={FinanceForm} />
               <Route exact path='/account-information' component={AccountInformation} />
+              <Route exact path='/trade-in-form' component={TradeIn} />
             </Switch>
         </Router>
     </div>
