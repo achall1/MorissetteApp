@@ -71,8 +71,8 @@ exports.create = (req,res) =>
             })
         }
 // check for all the required fiels of vehilce and send error msg
-const{make,model,mileage,price,vin,invintoryCount} = fields
-if(!make || !model|| !mileage||  !price|| !vin|| !invintoryCount)
+const{make,model,mileage,price,vin,inventoryCount, bodytype, color} = fields
+if(!make || !model || !mileage ||  !price || !vin || !inventoryCount || !bodytype || !color)
     {
         return res.status(400).json({
             error: 'all required attributes for vehicle are needed'
