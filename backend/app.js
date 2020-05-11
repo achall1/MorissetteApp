@@ -18,6 +18,7 @@ const orderRoutes = require('./routes/order');
 const braintreeRoutes = require('./routes/briantree');
 
 
+//mongodb+srv://admin:12345@cluster0-bctmh.mongodb.net/test?retryWrites=true&w=majority
 
 mongoose.connect(
     process.env.MONGO_URI,

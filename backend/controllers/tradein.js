@@ -88,8 +88,10 @@ if(!make || !model|| !mileage|| !year||  !askingprice||  !bodytype)
 
         tradein.save((err,result) =>{
             if(err){
+                console.log(err)
                 return res.status(400).json({
                     error: errorHandler(err)
+                    
                 })
             }
             //send the form data back to db

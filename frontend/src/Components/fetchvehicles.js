@@ -1,8 +1,8 @@
-
+import {API} from "../config";
 
 
 export const getVehicles = () => {
-    return fetch(`http://localhost:8000/api/vehicles/findall`, {
+    return fetch(`${API}/vehicles/findall`, {
         method: "GET"
     })
         .then(response => {
@@ -29,7 +29,7 @@ export const getVehicles = () => {
 */
 
 export const read = productId => {
-    return fetch(`http://localhost:8000/api/vehicle/${productId}`, {
+    return fetch(`${API}/vehicle/${productId}`, {
         method: "GET"
     })
         .then(response => {
@@ -40,7 +40,7 @@ export const read = productId => {
 
 
 export const createOrder = (customerId, token, createOrderData) => {
-    return fetch(`http://localhost:8000/api/order/create/${customerId}`, {
+    return fetch(`${API}/order/create/${customerId}`, {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -74,7 +74,7 @@ export const authenticate = (data, next) => {
     }
 };
 export const getBraintreeClientToken = (customerId, token) => {
-    return fetch(`http://localhost:8000/api/braintree/getToken/${customerId}`, {
+    return fetch(`${API}/braintree/getToken/${customerId}`, {
         method: "GET",
         headers: {
             Accept: "application/json",
@@ -89,7 +89,7 @@ export const getBraintreeClientToken = (customerId, token) => {
 };
 
 export const processPayment = (customerId, token, paymentData) => {
-    return fetch(`http://localhost:8000/api/braintree/payment/${customerId}`, {
+    return fetch(`${API}/braintree/payment/${customerId}`, {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -99,6 +99,39 @@ export const processPayment = (customerId, token, paymentData) => {
         body: JSON.stringify(paymentData)
     })
         .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+/// route for adding a finance request 
+////user submits a financing application using their id
+//router.post('/finance/create/:customerId', requireSignin, isAuth, create);
+ export const createFinance = (customerId, token, finance) => {
+    return fetch(`${API}/finance/create/${customerId}`, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: finance
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+ //get customer info
+ //router.get('/user/:customerId', requireSignin)
+
+ export const getCustomerInfo = (customerId,token) => {
+    return fetch(`${API}/user/${customerId}`, {
+        method: 'GET',
+        headers: {Authorization: `Bearer ${token}` }
+    })
+        .then(response => {
+            console.log(response);
             return response.json();
         })
         .catch(err => console.log(err));

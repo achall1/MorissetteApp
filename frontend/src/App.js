@@ -13,6 +13,7 @@ import TradeIn from './Components/trade_in';
 import PaymentForm from './Components/paymentForm';
 import FinanceForm from './Components/financeForm';
 import AccountInformation from './Components/AccountInformation'
+import AddFinance from './Components/AddFinance';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
               <Route exact path="/paymentForm" component={PaymentForm} />
               <Route exact path="/financeForm" component={FinanceForm} />
               <Route exact path='/account-information' component={AccountInformation} />
+              <Route exact path="/financeApplication" component={AddFinance} />
             </Switch>
         </Router>
     </div>

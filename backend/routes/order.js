@@ -17,8 +17,8 @@ router.post(
     "/order/create/:customerId",
     requireSignin,
     isAuth,
-    //addOrderToUserHistory,
-    //decreaseQuantity,
+    addOrderToUserHistory,
+    decreaseQuantity,
     create
 );
 

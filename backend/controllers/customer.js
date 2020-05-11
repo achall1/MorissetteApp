@@ -15,10 +15,10 @@ exports.customerById = (req,res,next,id) =>{
 }
 // this method add orders to customer(Role=0) buyHistoty Array
 exports.addOrderToUserHistory = (req, res, next) => {
-    let history = [];
+    let buyHistory = [];
 
     req.body.order.products.forEach(item => {
-        history.push({
+        buyHistory.push({
             _id: item._id,
             model: item.model,
             make: item.make,
@@ -30,7 +30,7 @@ exports.addOrderToUserHistory = (req, res, next) => {
         });
     });
 
-    User.findOneAndUpdate({ _id: req.profile._id }, { $push: { history: history } }, { new: true }, (error, data) => {
+    Customer.findOneAndUpdate({ _id: req.profile._id }, { $push: { buyHistory: buyHistory } }, { new: true }, (error, data) => {
         if (error) {
             return res.status(400).json({
                 error: 'Could not update customers purchase history'

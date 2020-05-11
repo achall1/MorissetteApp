@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import VehicleView from './vehicleView';
 import { read,getVehicles } from './fetchvehicles';
+import {API} from "../config";
 
 
 const SingleVehicle = props => {
@@ -30,7 +31,7 @@ const SingleVehicle = props => {
             <div className="vehicleView ">
           <Card>
             {shouldRedirect(redirect)}
-            <Card.Img variant="top" src={`http://localhost:8000/api/vehicle/picture/${product._id}`} />
+            <Card.Img variant="top" src={`${API}/vehicle/picture/${product._id}`} />
             <Card.Body>
               <Card.Text>
                 <p>

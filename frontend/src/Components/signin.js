@@ -4,7 +4,7 @@ import '../Styles/signin_style.css';
 import  axios  from 'axios';
 import { Route, Link, useHistory, Redirect } from 'react-router-dom'
 import Footer from './footer'
-
+import {API} from "../config";
 
 const Login  = () => {
     const [userEmail, setUserEmail] = useState("");
@@ -20,7 +20,7 @@ const Login  = () => {
         //console.log("Password: ", userPassword);
 
         e.preventDefault();
-        axios.post('http://localhost:8000/api/signin', 
+        axios.post(`${API}/signin`, 
         {
             "email": userEmail,
             "password": userPassword

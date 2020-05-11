@@ -22,9 +22,9 @@ exports.create = (req, res) => {
             });
         }
         //send email alert to admin
-         order.address
-         order.products.length
-         order.amount
+        // order.address
+       //  order.products.length
+        // order.amount
       /*  const emailData = {
             to: '',
             from: '.com',
@@ -46,7 +46,7 @@ exports.create = (req, res) => {
 
 exports.orderById = (req, res, next, id) => {
     Order.findById(id)
-        .populate('vehicles.vehicle', 'name', 'price')
+        .populate('vehicles.vehicle', 'name price')
         .exec((err, order) => {
             if (err || !order) {
                 return res.status(400).json({
