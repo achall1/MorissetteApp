@@ -1,0 +1,12 @@
+#main{
+    background: #005EFF;
+    width: 100%;
+    height: 70px;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+}
+#text {
+    font-style: Oswald;
+    font-size: 20;
+}
