@@ -4,6 +4,8 @@ import Footer from './footer'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios';
 import '../Styles/account_info_styles.css'
+import {API} from "../config";
+
 const AccountInformation = () => {
     const [stopLoop, setStopLoop] = useState(0);
     const [name, setName] = useState('');
@@ -21,7 +23,7 @@ const AccountInformation = () => {
         const userObj = JSON.parse(localStorage.getItem('UserAuth'));
         const userid = userObj.customer._id
 
-        axios.get(`http://localhost:8000/api/user/${userid}`, {
+        axios.get(`${API}/user/${userid}`, {
             headers: {
                 'Authorization': `Bearer ${userObj.token}`
             }
@@ -54,7 +56,7 @@ const AccountInformation = () => {
                         <div id="customer-info">
                             <p className="customer-attributes">Name: {name} </p>
                             <p className="customer-attributes">Email: {email} </p>
-                            <p className="customer-attributes">Vehicle(s): {buyHistory} </p>
+                            <p className="customer-attributes">Vehicle(s): {buyHistory.map} </p>
                             <p className="customer-attributes">Credit Card: #: {creditCard} </p>
                             <p className="customer-attributes">CVV: {cvv} </p>
                             <p className="customer-attributes">Home Address: {address} </p>

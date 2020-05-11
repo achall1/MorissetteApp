@@ -4,6 +4,7 @@ import { Form, Button, Col, Row } from 'react-bootstrap'
 import Header from '../header'
 import Footer from '../footer'
 import axios from 'axios'
+import {API} from "../../config";
 
 const UpdateVehicleInventory = () => {
 
@@ -46,7 +47,7 @@ const UpdateVehicleInventory = () => {
             }
         }
 
-        axios.post(`http://localhost:8000/api/vehicle/create/${_id}`, formdata, headers)
+        axios.post(`${API}/vehicle/create/${_id}`, formdata, headers)
         .then((res) => {
             console.log(res.data);
             setRedirect(true);

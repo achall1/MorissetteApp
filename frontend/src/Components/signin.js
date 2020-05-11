@@ -5,6 +5,7 @@ import  axios  from 'axios';
 import { Link, Redirect } from 'react-router-dom'
 import Footer from './footer'
 import Header from './header'
+import {API} from "../config";
 
 
 const Login  = () => {
@@ -20,7 +21,7 @@ const Login  = () => {
         //console.log("Password: ", userPassword);
 
         e.preventDefault();
-        axios.post('http://localhost:8000/api/signin', 
+        axios.post(`${API}/signin`, 
         {
             "email": userEmail,
             "password": userPassword

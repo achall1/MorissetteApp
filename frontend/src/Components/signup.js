@@ -5,6 +5,8 @@ import axios from 'axios'
 import Footer from './footer'
 import Header from './header'
 import '../Styles/signup_style.css'
+import {API} from "../config";
+
 
 const SignUp = () => {
     const [userFirstName, setFirstName] = useState("");
@@ -16,7 +18,7 @@ const SignUp = () => {
     const signUpUser = (e) => {
             //Here we will sign up the user then log them in
             e.preventDefault();
-            axios.post('http://localhost:8000/api/signup', 
+            axios.post(`${API}/signup`, 
             {
                 "first_name": userFirstName,
                 "last_name": userLastName,
@@ -30,7 +32,7 @@ const SignUp = () => {
     const handleNewUser = () => {
             //In this function, we will log in the user automatically and
             // redirect them to the homescreen
-            axios.post('http://localhost:8000/api/signin',
+            axios.post(`${API}/signin`,
             {
             "email": userEmail,
             "password": userPassword

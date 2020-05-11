@@ -216,7 +216,7 @@ exports.findallvehicles = (req, res) => {
         });
 };
 
-/* this function needs testing */
+
 exports.decreaseQuantity = (req, res, next) => {
     let bulkOps = req.body.order.products.map(item => {
         return {
@@ -227,7 +227,7 @@ exports.decreaseQuantity = (req, res, next) => {
         };
     });
 
-    Product.bulkWrite(bulkOps, {}, (error, products) => {
+    Vehicle.bulkWrite(bulkOps, {}, (error, products) => {
         if (error) {
             return res.status(400).json({
                 error: 'Could not update product'

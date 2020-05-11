@@ -3,6 +3,7 @@ import VehicleView from './vehicleView';
 import { read,getVehicles } from './fetchvehicles';
 import Header from './header';
 import Footer from './footer'
+import {API} from "../config";
 
 
 const SingleVehicle = props => {
@@ -33,7 +34,7 @@ const SingleVehicle = props => {
               <Header />
                   <Card>
                 {shouldRedirect(redirect)}
-                <Card.Img variant="top" src={`http://localhost:8000/api/vehicle/picture/${product._id}`} />
+                <Card.Img variant="top" src={`${API}/vehicle/picture/${product._id}`} />
                 <Card.Body>
                   <Card.Text>
                     <p>

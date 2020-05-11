@@ -25,6 +25,9 @@ const AccountSettings = () => {
                     <li className="listelem">
                         <Nav.Link className="content" href="/Trade-In">Trade-In Vehicle</Nav.Link>
                     </li>
+                    <li className="listelem">
+                        <Nav.Link className="content" href="/financeApplication">Apply for vehicel financing</Nav.Link>
+                    </li>
                 </ul>
 
                 {/* //This is the modal for the registered user to see when they click 

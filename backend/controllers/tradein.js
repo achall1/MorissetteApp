@@ -57,7 +57,7 @@ exports.create = (req,res) =>
     form.parse(req,(err,fields,files)=>{
 
         if(err)
-        {
+        {       console.log(err);
             return res.status(400).json({
                 error: 'Trade-in car couldnt be uploaded'
             })
@@ -88,6 +88,7 @@ if(!make || !model|| !mileage|| !year||  !askingprice||  !bodytype)
 
         tradein.save((err,result) =>{
             if(err){
+                console.log(err);
                 return res.status(400).json({
                     error: err
                 })

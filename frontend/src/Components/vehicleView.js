@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import VehicleImage from './vehicleImage';
 import { Card } from 'react-bootstrap'
 import { addItem, updateItem, removeItem } from './cartHelpers';
+import {API} from "../config";
 
 const VehicleView = ({
     product,
@@ -102,7 +103,7 @@ const VehicleView = ({
         <div className="vehicleView ">
           <Card>
             {shouldRedirect(redirect)}
-            <Card.Img variant="top" src={`http://localhost:8000/api/vehicle/picture/${product._id}`} />
+            <Card.Img variant="top" src={`${API}/vehicle/picture/${product._id}`} />
             <Card.Body>
               <Card.Text>
                 <p>

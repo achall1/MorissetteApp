@@ -55,8 +55,8 @@ exports.create = (req,res) =>
        
         // check for all the required fiels of vehilce and send error msg
         //has to have customer id included
-        const{occupation,income,ssn,dob,employersname,credit,customer} = fields
-        if(!occupation || !income|| !ssn||  !dob|| !employersname|| !credit ||!customer)
+        const{income,ssn,dob} = fields
+        if( !income|| !ssn||  !dob  )
             {
                 return res.status(400).json({
                     error: 'all required attributes for finance report are needed'
@@ -67,6 +67,7 @@ exports.create = (req,res) =>
 
         finance.save((err,result) =>{
             if(err){
+                console.log(err);
                 console.log('Finance Report creation error ', err);
                 return res.status(400).json({
                     error: errorHandler(err)
@@ -90,10 +91,12 @@ exports.update = (req, res) => {
 
      finance.save((err, result) => {
             if (err) {
+                console.log(err);
                 return res.status(400).json({
                     error: errorHandler(err)
                 });
             }
+
             res.json(result);
         });
     });
