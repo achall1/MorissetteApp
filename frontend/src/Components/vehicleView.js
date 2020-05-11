@@ -118,7 +118,7 @@ const VehicleView = ({
             </Card.Footer>
           </Card>
 
-            {showStock(product.invintoryCount)}
+            {showStock(product.inventoryCount)}
             <br />
     
             {showViewButton(showViewProductButton)}
