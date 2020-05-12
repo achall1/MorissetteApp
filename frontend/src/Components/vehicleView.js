@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import VehicleImage from './vehicleImage';
 import { Card } from 'react-bootstrap'
 import { addItem, updateItem, removeItem } from './cartHelpers';
+import { Route, Router } from 'react-router-dom'
 
 const VehicleView = ({
     product,
@@ -66,9 +67,10 @@ const VehicleView = ({
     const showViewButton = showViewProductButton => {
         return (
           showViewProductButton && (
-            <Link to="/view-product" className="mr-2">
+            <Link to={{pathname: "view-product", data:product._id, model:product.model.substring(0,100), mileage:product.mileage, price:product.price}} className="mr-2">
               <button className="btn btn-outline-primary mt-2 mb-2 card-btn-1">View Car</button>
             </Link>
+
           )
         );
       };
@@ -128,6 +130,7 @@ const VehicleView = ({
             {showRemoveButton(showRemoveProductButton)}
 
             {showCartUpdateOptions(cartUpdate)}
+
 
 
           
