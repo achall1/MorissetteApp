@@ -12,15 +12,27 @@ import '../Styles/editAccount_style.css'
 import { addItem, updateItem, removeItem } from './cartHelpers';
 
 
-const ProductView = props => {
 
+const ProductView = props => {
     const [product, setProduct] = useState([])
     const [error, setError] = useState(false);
     const [run, setRun] = useState(false);
+
     useEffect(() => {
-        const productId = props.match.params.productId;
+        const productId = props.location.data
         loadSingleProduct(productId);
+        
     }, [props]);
+
+    const [redirect, setRedirect] = useState(false);
+
+    const showAddToCartButton = true
+
+        const shouldRedirect = redirect => {
+      if (redirect) {
+        return <Redirect to="/cart" />;
+      }
+    };
 
     const loadSingleProduct = productId => {
         read(productId).then(data => {
@@ -34,33 +46,47 @@ const ProductView = props => {
         });
     };
 
-    const showProduct = product => {
-        return(
-            <Card>
-                <Card.Body>
-            <div>
-                {product.map((product, i) => (
-                    <VehicleView
-                        key={i}
-                        product={product}
-                        showAddToCartButton={false}
-                        cartUpdate={true}
-                        setRun={setRun}
-                        run={run}
-                      />
-                      ))}
-               </div>
-               </Card.Body>
-               </Card>
+     const addToCart = () => {
+      // console.log('added');
+      addItem(product, setRedirect(true));
+    };
 
-        );
+    const showAddToCartBtn = showAddToCartButton => {
+      return (
+        showAddToCartButton && (
+          <button onClick={addToCart} className="btn btn-outline-warning mt-2 mb-2 card-btn-1  ">
+            Add to cart
+          </button>
+        )
+      );
     };
 
     return(
-        <div className="row">
-            <div className="col-6">{showProduct(product)}</div>
-            <div products={product} setRun={setRun} run={run} />
-            </div>
+
+
+          <div className="productView ">
+          <Card>
+            {shouldRedirect(redirect)}
+            <Card.Img variant="top" src={`http://localhost:8000/api/vehicle/picture/${props.location.data}`} />
+            <Card.Body>
+              <Card.Text>
+                <p>
+                                {`${props.location.model} •  ${props.location.mileage}K miles`}
+                </p>
+                <p>
+                   {` $${props.location.price}`}
+                </p>
+              </Card.Text>
+            </Card.Body>
+            <Card.Footer>
+              <small className="text-muted">Last updated 3 mins ago</small>
+            </Card.Footer>
+          </Card>
+                    <br />
+
+                     {showAddToCartBtn(showAddToCartButton)}
+          </div>
+
 
 
     )
