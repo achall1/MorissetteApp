@@ -8,4 +8,4 @@ to run the server
 3) npm start
 it should run on http://localhost:8000/api/
 3 routes completed so far signin/signup/signout
-signin/signup/signout can be tested using postamn https://www.postman.com/downloads/
+signin/signup/signout can be tested using postman https://www.postman.com/downloads/
